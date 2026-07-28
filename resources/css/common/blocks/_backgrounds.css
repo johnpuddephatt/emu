@@ -1,0 +1,39 @@
+.has-black-background-color {
+  @apply bg-black text-white;
+}
+
+.has-black-background-color :where(a) {
+  @apply text-white;
+}
+
+.has-cream-background-color {
+  @apply bg-cream;
+}
+
+.has-white-background-color {
+  @apply bg-white;
+}
+
+.has-gray-light-background-color {
+  @apply bg-gray-light;
+}
+
+.has-green-background-color {
+  @apply bg-green text-white;
+}
+
+.has-blue-background-color {
+  @apply bg-blue text-white;
+}
+
+.has-pink-background-color {
+  @apply bg-pink;
+}
+
+.has-red-background-color {
+  @apply bg-red text-white;
+}
+
+.has-yellow-background-color {
+  @apply bg-yellow;
+}

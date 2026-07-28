@@ -1,0 +1,45 @@
+.wp-block-buttons {
+  @apply flex gap-3 flex-wrap;
+}
+
+/*
+ * Solid pill buttons, driven by variables so the block style
+ * variants (registered in editor.js) only swap colours.
+ * Default: black. Variants: inverted (white), primary (yellow).
+ */
+.wp-element-button {
+  --button-bg: var(--color-black);
+  --button-fg: var(--color-white);
+  --button-hover-bg: var(--color-gray);
+
+  @apply inline-flex items-center justify-center !rounded-md px-8 py-3
+    text-sm  font-bold no-underline transition duration-300;
+  background-color: var(--button-bg);
+  color: var(--button-fg) !important;
+}
+
+.wp-element-button:hover {
+  background-color: var(--button-hover-bg);
+}
+
+.wp-block-button.is-style-inverted .wp-element-button {
+  --button-bg: var(--color-white);
+  --button-fg: var(--color-black);
+  --button-hover-bg: var(--color-gray-light);
+}
+
+.wp-block-button.is-style-primary .wp-element-button {
+  --button-bg: var(--color-yellow);
+  --button-fg: var(--color-black);
+  --button-hover-bg: var(--color-yellow-dark);
+}
+
+/*
+ * Default-style buttons flip to inverted automatically inside
+ * dark sections; explicit variants are left alone.
+ */
+.has-black-background-color .wp-block-button:not(.is-style-inverted):not(.is-style-primary) .wp-element-button {
+  --button-bg: var(--color-white);
+  --button-fg: var(--color-black);
+  --button-hover-bg: var(--color-gray-light);
+}

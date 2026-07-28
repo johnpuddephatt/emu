@@ -1,0 +1,74 @@
+@source "../views/";
+@source "../../app/";
+@source "../js/";
+@plugin "@tailwindcss/typography";
+
+@theme static {
+  --font-sans: 'Rockford Sans', sans-serif;
+
+  /*
+   * Palette: brand colours from the eastmarshunited 11ty site,
+   * darks/cream sampled from the 2026 homepage design.
+   * Resetting Tailwind's default palette keeps the generated
+   * theme.json editor palette down to just these.
+   */
+  --color-*: initial;
+  --color-white: #fff;
+  --color-black: #292929;
+  --color-cream: #f7f3e8;
+  --color-gray: #55595c;
+  --color-gray-light: #eceeef;
+
+  --color-green: #338d43;
+  --color-blue: #065499;
+  --color-pink: #eb7fa7;
+  --color-red: #e9404f;
+  --color-yellow: #e2d750;
+  --color-yellow-dark: #ded136;
+
+  --max-width-8xl: 90rem;
+  --max-width-9xl: 100rem;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Solid pastel tints of the brand colours — equivalent to bg-{color}/N
+ * over white, but opaque so nothing shows through. Defined as utilities
+ * (not @theme colours) so they stay out of the editor palette.
+ */
+@utility bg-yellow-soft {
+  background-color: color-mix(in srgb, var(--color-yellow) 30%, var(--color-white));
+}
+
+@utility bg-pink-soft {
+  background-color: color-mix(in srgb, var(--color-pink) 10%, var(--color-white));
+}
+
+@utility bg-green-soft {
+  background-color: color-mix(in srgb, var(--color-green) 15%, var(--color-white));
+}
+
+@utility bg-blue-soft {
+  background-color: color-mix(in srgb, var(--color-blue) 12%, var(--color-white));
+}
+
+@utility bg-red-soft {
+  background-color: color-mix(in srgb, var(--color-red) 10%, var(--color-white));
+}
+
+/*
+ * Almost-round with a hand-drawn wobble: each corner's horizontal and
+ * vertical radii deviate a few points from 50% in different directions.
+ */
+@utility rounded-blob {
+  border-radius: 51% 49% 53% 47% / 47% 55% 45% 53%;
+}
+
+@utility max-w-wide {
+  max-width: var(--wp--style--global--wide-size);
+}
+
+@utility max-w-content {
+  max-width: var(--wp--style--global--content-size);
+}

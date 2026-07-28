@@ -1,0 +1,173 @@
+/*
+ * Scroll-driven parallax for images floating around content
+ * (ported from carrfenton). The timeline belongs to the section
+ * carrying .animate-scroll-section, and images animate over its
+ * exit range: progress is 0 while the section's top edge is at the
+ * top of the viewport (the unscrolled state for a top-of-page hero)
+ * and 1 once it has scrolled fully away. Coupling to the section —
+ * rather than each image's own box — plus rem travel distances keeps
+ * positions stable when the window height changes. Progressive
+ * enhancement: browsers without animation-timeline show the images
+ * static, at their 0% positions.
+ */
+@supports (animation-timeline: --test) {
+  .animate-scroll-section {
+    view-timeline-name: --scroll-section;
+  }
+
+  .animate-scroll-1,
+  .animate-scroll-2,
+  .animate-scroll-3,
+  .animate-scroll-4 {
+    animation: linear both;
+    animation-timeline: --scroll-section;
+    animation-range: exit 0% exit 100%;
+  }
+
+  .animate-scroll-1 {
+    animation-name: scrollAnimation1;
+  }
+
+  .animate-scroll-2 {
+    animation-name: scrollAnimation2;
+  }
+
+  .animate-scroll-3 {
+    animation-name: scrollAnimation3;
+  }
+
+  .animate-scroll-4 {
+    animation-name: scrollAnimation4;
+  }
+}
+
+/*
+ * Staggered entrance for the fullscreen menu overlay: items fade in
+ * one after another each time it opens. Uses @starting-style +
+ * transitions (not keyframes) so the effect fails visible — items'
+ * natural state is fully shown, and the transition merely animates
+ * from the starting style when Alpine's x-show flips the overlay
+ * from display:none. Reduced-motion users see the items immediately.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .menu-stagger > li {
+    transition:
+      opacity 0.35s ease-out,
+      translate 0.35s ease-out;
+  }
+
+  @starting-style {
+    .menu-stagger > li {
+      opacity: 0;
+      translate: 0 1rem;
+    }
+  }
+
+  .menu-stagger > li:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+  .menu-stagger > li:nth-child(2) {
+    transition-delay: 0.16s;
+  }
+  .menu-stagger > li:nth-child(3) {
+    transition-delay: 0.22s;
+  }
+  .menu-stagger > li:nth-child(4) {
+    transition-delay: 0.28s;
+  }
+  .menu-stagger > li:nth-child(5) {
+    transition-delay: 0.34s;
+  }
+  .menu-stagger > li:nth-child(6) {
+    transition-delay: 0.4s;
+  }
+  .menu-stagger > li:nth-child(7) {
+    transition-delay: 0.46s;
+  }
+  .menu-stagger > li:nth-child(n + 8) {
+    transition-delay: 0.52s;
+  }
+}
+
+/*
+ * Scroll-driven entrances for the timeline: items slide in from their
+ * side of the spine (circles rise) as they enter the viewport, settling
+ * once they're 70% in. Progressive enhancement like the parallax above,
+ * and skipped entirely for reduced-motion users.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .animate-enter-left,
+    .animate-enter-right,
+    .animate-enter-up {
+      animation: linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+
+    .animate-enter-left {
+      animation-name: enterLeft;
+    }
+
+    .animate-enter-right {
+      animation-name: enterRight;
+    }
+
+    .animate-enter-up {
+      animation-name: enterUp;
+    }
+  }
+}
+
+@layer animations {
+  @keyframes enterLeft {
+    from {
+      opacity: 0;
+      transform: rotate(-6deg) translateX(-3rem);
+    }
+  }
+
+  @keyframes enterRight {
+    from {
+      opacity: 0;
+      transform: rotate(6deg) translateX(3rem);
+    }
+  }
+
+  @keyframes enterUp {
+    from {
+      opacity: 0;
+      transform: translateY(2.5rem);
+    }
+  }
+
+
+  /*
+   * Parallax travel distances. `to`-only: images start exactly where
+   * the layout puts them (progress 0 at the unscrolled position) and
+   * drift up at different speeds as the section scrolls away.
+   */
+  @keyframes scrollAnimation1 {
+    to {
+      transform: translateY(-6rem);
+    }
+  }
+
+  @keyframes scrollAnimation2 {
+    to {
+      transform: translateY(-16rem);
+    }
+  }
+
+  @keyframes scrollAnimation3 {
+    to {
+      transform: translateY(-9rem);
+    }
+  }
+
+  @keyframes scrollAnimation4 {
+    to {
+      transform: translateY(-13rem);
+    }
+  }
+}

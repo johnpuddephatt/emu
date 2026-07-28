@@ -1,0 +1,75 @@
+@import './_fonts.css';
+@import './_animations.css';
+@import './_content.css';
+@import './_type.css';
+@import './_prose.css';
+@import './blocks/_backgrounds.css';
+@import './blocks/button.css';
+@import './blocks/heading.css';
+@import './blocks/list.css';
+@import './blocks/group.css';
+@import './blocks/paragraph.css';
+
+[x-cloak] {
+  display: none;
+}
+
+/*
+ * Recolour inline SVG icons that carry hardcoded colours (Inkscape
+ * writes them as inline style attributes, hence !important). Fill is
+ * only forced where a fill is actually painted, so outline doodles
+ * stay hollow. Redundant for icons already using currentColor.
+ */
+.svg-recolor [stroke]:not([stroke='none']),
+.svg-recolor [style*='stroke:']:not([style*='stroke:none']) {
+  stroke: currentColor !important;
+}
+
+.svg-recolor [fill]:not([fill='none']),
+.svg-recolor [style*='fill:']:not([style*='fill:none']) {
+  fill: currentColor !important;
+}
+
+/*
+ * Smooth scrolling for the "In this section" jump links, with room
+ * above the target heading when it lands.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.page-content [id] {
+  scroll-margin-block-start: 2.5rem;
+}
+
+/*
+ * Full-bleed sections that keep their content aligned to the
+ * global wide width. Requires settings.layout in theme.json.
+ */
+@utility containerish {
+  max-width: none;
+  padding-left: 1rem;
+  @media (min-width: 768px) {
+    padding-left: 2rem;
+  }
+  @media (min-width: 1342px) {
+    padding-left: calc(
+      (100vw - var(--wp--style--global--wide-size)) / 2 + 2rem
+    );
+  }
+}
+
+@utility containerishy {
+  max-width: none;
+  padding-inline: 1rem;
+  @media (min-width: 768px) {
+    padding-inline: 2rem;
+  }
+  @media (min-width: 1342px) {
+    padding-inline: calc(
+      (100vw - var(--wp--style--global--wide-size)) / 2 + 2rem
+    );
+  }
+}

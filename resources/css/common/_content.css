@@ -1,0 +1,36 @@
+/*
+ * Block alignment layout (classic themes don't get this from WP).
+ * The content column wraps `the_content()`: capped at the wide size,
+ * with children defaulting to the content size. .alignwide opts up
+ * to the wide size; .alignfull breaks out to the full viewport.
+ * Widths come from theme.json via the --wp--style--global-* vars.
+ */
+.page-content {
+  position: relative;
+  max-width: var(--wp--style--global--wide-size);
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  @variant md {
+    padding-inline: 2rem;
+  }
+
+    @variant lg {
+    padding-inline: 4rem;
+  }
+}
+
+.page-content > * {
+  max-width: var(--wp--style--global--content-size);
+  margin-inline: auto;
+}
+
+.page-content > .alignwide {
+  max-width: var(--wp--style--global--wide-size);
+}
+
+.page-content > .alignfull {
+  max-width: none;
+  width: 100vw;
+  margin-inline: calc(-50vw + 50%);
+}

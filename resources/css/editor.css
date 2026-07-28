@@ -1,0 +1,14 @@
+@layer theme, base, components, utilities;
+@import 'swiper/css' layer(base);
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(base);
+
+@import './_tailwind-config.css';
+@tailwind utilities;
+
+@import './common/global.css';
+
+:where(.editor-visual-editor) a {
+  color: inherit;
+  text-decoration: none !important;
+}

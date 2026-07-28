@@ -1,0 +1,21 @@
+.prose :where(h1):not(:where([class~="not-prose"], [class~="not-prose"] *)),
+.prose :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *))
+{
+    @apply type-xl;
+}
+
+
+.prose :where(h3):not(:where([class~="not-prose"], [class~="not-prose"] *))
+{
+    @apply type-lg;
+}
+
+.prose :where(h1):not(:where([class~="not-prose"], [class~="not-prose"] *)),
+.prose :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)),
+.prose :where(h3):not(:where([class~="not-prose"], [class~="not-prose"] *)),
+.prose :where(h4):not(:where([class~="not-prose"], [class~="not-prose"] *)),
+.prose :where(h5):not(:where([class~="not-prose"], [class~="not-prose"] *)),
+.prose :where(h6):not(:where([class~="not-prose"], [class~="not-prose"] *))
+{
+    @apply first:mt-0
+}

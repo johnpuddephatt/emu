@@ -1,0 +1,33 @@
+/*
+ * Unordered lists, site-wide: bold text with a large yellow ring as
+ * the bullet. One rule for both wysiwyg/prose content and core list
+ * blocks — change the design here and it applies everywhere.
+ */
+.prose ul,
+ul.wp-block-list:not(.is-style-checklist) {
+  @apply list-none p-0;
+}
+
+.prose ul > li,
+ul.wp-block-list:not(.is-style-checklist) > li {
+  @apply relative pl-[2.25em] font-bold;
+}
+
+.prose ul > li + li,
+ul.wp-block-list:not(.is-style-checklist) > li + li {
+  @apply mt-[0.75em];
+}
+
+.prose ul > li::before,
+ul.wp-block-list:not(.is-style-checklist) > li::before {
+  content: '';
+  @apply absolute top-[0.2em] left-0 block size-[1.5em] rounded-full border-2 border-yellow-dark;
+}
+
+.is-style-checklist li::before {
+content: '[]'
+}
+
+.is-style-checklist li.is-style-checked::before {
+content: '[✅]'
+}

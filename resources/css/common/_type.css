@@ -1,0 +1,11 @@
+@utility type-xl {
+    @apply text-6xl mb-4 font-bold text-balance;
+}
+
+@utility type-lg {
+    @apply text-5xl mb-4 font-bold text-balance;
+}
+
+@utility type-md {
+    @apply text-3xl mb-4 font-bold ;
+}
