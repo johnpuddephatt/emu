@@ -12,3 +12,94 @@
   color: inherit;
   text-decoration: none !important;
 }
+
+[data-toolbar='simple'] iframe {
+  height: 100px !important;
+  min-height: 100px !important;
+}
+
+[data-toolbar='simple'] .mce-statusbar {
+  display: none;
+}
+
+.editor-styles-wrapper {
+  @apply prose font-sans  2xl:text-lg;
+}
+
+/* .editor-styles-wrapper > div { */
+.is-root-container {
+  @apply max-w-wide px-4 md:px-8 mx-auto;
+}
+
+.block-editor-block-list__layout.is-root-container > .alignfull,
+.block-editor-block-list__layout.is-root-container
+  > .block-editor-block-list__block
+  > .alignfull,
+.block-editor-block-list__layout.is-root-container
+  > .block-editor-block-list__block:not(.alignfull)
+  > div
+  > .alignfull {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%) !important;
+}
+
+.editor-styles-wrapper {
+  @apply max-w-none;
+}
+
+/* .editor-styles-wrapper
+  .is-root-container.block-editor-block-list__layout
+  > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+  @apply !mx-0;
+} */
+
+.acf-block-preview a {
+  @apply pointer-events-none;
+}
+
+.editor-styles-wrapper .wp-block-column {
+  @apply border border-dashed border-black/20;
+}
+
+.acf-fc-collapse-all,
+.acf-fc-expand-all,
+.acf-fc-top-actions,
+.acf-fc-layout-controls [data-name='duplicate-layout'],
+.acf-fc-layout-controls [data-name='add-layout'] {
+  @apply !hidden;
+}
+
+.acf-flexible-content > .values {
+  margin: 0 -18px 8px;
+}
+
+.editor-visual-editor__post-title-wrapper {
+  @apply border-b !mt-0 !px-0  !max-w-none mb-8 border-black/10 py-4;
+}
+
+.editor-post-title__input {
+  @apply mb-0  pt-2  type-lg  !max-w-content mx-auto !w-full;
+}
+
+.wp-block:has(.wp-block.alignfull) {
+  @apply !max-w-none mx-0;
+}
+
+.acf-gallery-toolbar li:nth-child(2) {
+  @apply hidden;
+}
+
+@media (min-width: 1342px) {
+  .containerish,
+  .wp-block-group.alignfull {
+    padding-left: calc(
+      (100vw - var(--wp--style--global--wide-size)) / 2 + 2rem - 140px
+    );
+  }
+}
+
+/* Override some default styles that wordpress inserts for the editor */
+
+.block-editor-block-list__layout.is-root-container > .alignwide {
+  max-width: 100% !important;
+}
