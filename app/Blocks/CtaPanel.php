@@ -124,6 +124,7 @@ class CtaPanel extends Block
         return [
             'image' => get_field('image') ?: null,
             'image_side' => get_field('image_side') ?: 'left',
+            'animate_image' => (bool) get_field('animate_image'),
         ];
     }
 
@@ -148,7 +149,14 @@ class CtaPanel extends Block
                     'right' => 'Right',
                 ],
                 'default_value' => 'left',
+            ])
+            ->addTrueFalse('animate_image', [
+                'label' => 'Animate image in',
+                'instructions' => 'Slide the image up into view as the panel is scrolled into the viewport.',
+                'ui' => true,
+                'default_value' => 0,
             ]);
+            // ->conditional('image', '!=', '');
 
         return $fields->build();
     }

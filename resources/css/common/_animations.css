@@ -59,7 +59,36 @@
   }
 }
 
+/*
+ * Image reveal: the image slides up out of a mask as its block scrolls
+ * into view. The mask is `overflow: hidden`, which makes it a scroll
+ * container and would capture an anonymous `view()` timeline — so the
+ * timeline is named on an ancestor outside the mask
+ * (`.animate-reveal-scope`) and referenced by name from the image.
+ * Progressive enhancement + reduced-motion guarded like the above: with
+ * no support the image simply sits in place.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .animate-reveal-scope {
+      view-timeline-name: --reveal;
+    }
+
+    .animate-reveal-up {
+      animation: linear revealUp both;
+      animation-timeline: --reveal;
+      animation-range: entry 0% entry 70%;
+    }
+  }
+}
+
 @layer animations {
+  @keyframes revealUp {
+    from {
+      transform: translateY(100%);
+    }
+  }
+
   @keyframes enterLeft {
     from {
       opacity: 0;
