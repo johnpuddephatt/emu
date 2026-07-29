@@ -17,11 +17,11 @@
     <section class="not-prose wp-block alignfull relative py-16 lg:py-24">
         <div class="relative mx-auto max-w-6xl px-4">
             {{-- The timeline spine --}}
-            <div aria-hidden="true" class="absolute top-0 bottom-0 left-1/2 w-3 -translate-x-1/2 bg-yellow-dark"></div>
+            <div aria-hidden="true" class="bg-yellow-dark absolute top-0 bottom-0 left-1/2 w-3 -translate-x-1/2"></div>
 
             @if ($intro)
                 <div
-                    class="relative mx-auto mb-10 flex aspect-square w-72 items-center justify-center rounded-blob p-10 text-center text-2xl font-bold text-balance has-black-background-color animate-enter-up lg:mb-16 lg:w-80 lg:text-3xl">
+                    class="rounded-blob has-black-background-color animate-enter-up relative mx-auto mb-10 flex aspect-square w-72 items-center justify-center p-10 text-center text-2xl font-bold text-balance lg:mb-16 lg:w-80 lg:text-3xl">
                     {{ $intro }}
                 </div>
             @endif
@@ -32,10 +32,10 @@
         two, so consecutive items overlap by half and zigzag tightly
         down the spine regardless of their heights.
       --}}
-                <ul class="m-0   p-0 lg:grid lg:grid-cols-2 lg:gap-y-16 lg:gap-x-24">
+                <ul class="m-0 p-0 lg:grid lg:grid-cols-2 lg:gap-x-24 lg:gap-y-16">
                     @foreach ($items as $item)
                         @if ($item['acf_fc_layout'] === 'whats_next')
-                            <li class=" before:hidden! relative mt-12 animate-enter-up lg:col-span-2 lg:mt-20"
+                            <li class="animate-enter-up relative mt-12 before:hidden! lg:col-span-2 lg:mt-20"
                                 style="grid-row: {{ $loop->iteration + 1 }}">
                                 @include('blocks.partials.timeline-whats-next', ['item' => $item])
                             </li>

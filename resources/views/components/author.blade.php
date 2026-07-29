@@ -13,11 +13,12 @@
     swap the initial for the author's illustration here.
   --}}
 
-    <span aria-hidden="true"
-        class="flex size-12 shrink-0 items-center overflow-hidden justify-center rounded-blob bg-yellow-soft text-sm font-bold text-black">
+    <span
+        aria-hidden="true"
+        class="rounded-blob bg-yellow-soft flex size-12 shrink-0 items-center justify-center overflow-hidden text-sm font-bold text-black"
+    >
         {{-- {{ mb_strtoupper(mb_substr($name, 0, 1)) }} --}}
         {!! get_avatar($id) !!}
-
     </span>
 
     <span class="p-author h-card">{{ $name }}</span>

@@ -16,9 +16,9 @@ add_filter('excerpt_more', function () {
     return '&hellip;';
 });
 
-add_filter( 'excerpt_length', function() {
+add_filter('excerpt_length', function () {
     return 30;
-} );
+});
 
 
 /**
@@ -51,5 +51,3 @@ add_action('template_redirect', function () {
         exit;
     }
 });
-
-

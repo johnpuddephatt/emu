@@ -14,18 +14,17 @@
     $excerpt = $headerPost && has_excerpt($headerPost) ? get_the_excerpt($headerPost) : null;
 @endphp
 
-<header class="relative overflow-x-clip has-black-background-color">
-    <div aria-hidden="true" class="pointer-events-none absolute -bottom-10 right-0 w-[32rem] max-w-none  lg:w-[60rem] ">
+<header class="has-black-background-color relative overflow-x-clip">
+    <div aria-hidden="true" class="pointer-events-none absolute right-0 -bottom-10 w-[32rem] max-w-none lg:w-[60rem]">
         @svg('page-lines', 'absolute bottom-10 h-auto w-full text-pink [&_path]:stroke-[9]')
-
     </div>
 
-    <div class="relative mx-auto grid max-w-wide gap-x-12 px-4 pt-32 md:px-8 lg:grid-cols-2 lg:pt-36">
+    <div class="max-w-wide relative mx-auto grid gap-x-12 px-4 pt-32 md:px-8 lg:grid-cols-2 lg:pt-36">
         <div class="relative z-20 self-center pb-12 lg:pb-20">
             <h1 class="text-4xl font-bold text-balance lg:text-5xl">{!! $title ?? get_the_title() !!}</h1>
 
             @if ($excerpt)
-                <p class="mt-6 max-w-md font-bold leading-relaxed">{{ $excerpt }}</p>
+                <p class="mt-6 max-w-md leading-relaxed font-bold">{{ $excerpt }}</p>
             @endif
         </div>
 
@@ -33,10 +32,12 @@
             <div class="relative mx-auto mt-6 w-fit self-end lg:mt-0">
                 {{-- Swoosh lines weaving behind the illustration, spilling past the section edge --}}
 
-                {!! wp_get_attachment_image($thumbnail, 'large', false, [
-                    'class' => 'relative z-10 h-auto w-auto max-h-96 lg:max-h-[30rem]',
-                    'sizes' => '(min-width: 1024px) 30vw, 60vw',
-                ]) !!}
+                {!!
+                    wp_get_attachment_image($thumbnail, 'large', false, [
+                        'class' => 'relative z-10 h-auto w-auto max-h-96 lg:max-h-[30rem]',
+                        'sizes' => '(min-width: 1024px) 30vw, 60vw',
+                    ])
+                !!}
             </div>
         @endif
     </div>

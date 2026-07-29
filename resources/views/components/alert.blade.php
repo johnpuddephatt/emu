@@ -1,6 +1,6 @@
 @props([
-  'type' => null,
-  'message' => null,
+    'type' => null,
+    'message' => null,
 ])
 
 @php($class = match ($type) {
@@ -10,6 +10,4 @@
   default => 'text-indigo-50 bg-indigo-400',
 })
 
-<div {{ $attributes->merge(['class' => "px-2 py-1 {$class}"]) }}>
-  {!! $message ?? $slot !!}
-</div>
+<div {{ $attributes->merge(['class' => "px-2 py-1 {$class}"]) }}>{!! $message ?? $slot !!}</div>
