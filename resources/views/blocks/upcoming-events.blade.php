@@ -1,18 +1,32 @@
+@php
+    // The editor iframe scrolls independently, so the scroll-driven reveal
+    // would leave the illustration parked off-screen — render it static there.
+    $animate = $illustration && $animate_illustration && ! $block->preview;
+@endphp
+
 @unless ($block->preview)
     <div {{ $attributes }}>
 @endunless
 
 <section class="wp-block alignfull bg-cream relative overflow-x-clip">
     <div class="max-w-wide mx-auto grid items-center gap-10 px-4 lg:grid-cols-2">
-        <div class="hidden self-end lg:block">
+        <div class="hidden self-end lg:block {{ $animate ? 'animate-reveal-scope' : '' }}">
             @svg('lines_alt', 'absolute left-0 bottom-0 h-[calc(100%+6rem)] w-auto')
             @if ($illustration)
-                {!!
-                    wp_get_attachment_image($illustration, 'large', false, [
-                        'class' => 'mx-auto relative max-h-[40rem] w-auto',
+                @php
+                    $image = wp_get_attachment_image($illustration, 'large', false, [
+                        'class' => 'mx-auto relative max-h-[40rem] w-auto' . ($animate ? ' animate-reveal-up' : ''),
                         'sizes' => '(min-width: 1024px) 40vw, 0px',
-                    ])
-                !!}
+                    ]);
+                @endphp
+
+                {{-- When animating, a mask hugging the illustration keeps it out
+                     of sight at translateY(100%). --}}
+                @if ($animate)
+                    <div class="overflow-hidden">{!! $image !!}</div>
+                @else
+                    {!! $image !!}
+                @endif
             @endif
         </div>
 

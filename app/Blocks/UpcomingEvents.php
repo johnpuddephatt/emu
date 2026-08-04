@@ -120,6 +120,7 @@ class UpcomingEvents extends Block
         return [
             'events' => $events,
             'illustration' => get_field('illustration') ?: null,
+            'animate_illustration' => (bool) get_field('animate_illustration'),
             'all_events_link' => get_field('all_events_link') ?: null,
         ];
     }
@@ -136,6 +137,12 @@ class UpcomingEvents extends Block
                 'label' => 'Illustration',
                 'return_format' => 'id',
                 'preview_size' => 'medium',
+            ])
+            ->addTrueFalse('animate_illustration', [
+                'label' => 'Animate illustration in',
+                'instructions' => 'Slide the illustration up into view as the section is scrolled into the viewport.',
+                'ui' => true,
+                'default_value' => 0,
             ])
             ->addNumber('number', [
                 'label' => 'Number of events',
