@@ -4,19 +4,24 @@
  * blocks — change the design here and it applies everywhere.
  *
  * Lists inside a `.not-prose` subtree opt out, matching how the
- * typography plugin's own selectors behave.
+ * typography plugin's own selectors behave. `.rich-text` is the way
+ * back in for wysiwyg content that has to live inside one — see
+ * `common/_rich-text.css`.
  */
 .prose ul:not(:where([class~='not-prose'], [class~='not-prose'] *)),
+.rich-text ul,
 ul.wp-block-list:not(.is-style-checklist) {
   @apply list-none pl-0 my-4;
 }
 
 .prose ul:not(:where([class~='not-prose'], [class~='not-prose'] *)) > li,
+.rich-text ul > li,
 ul.wp-block-list:not(.is-style-checklist) > li {
   @apply relative pl-[2.25em] ;
 }
 
 .prose ul:not(:where([class~='not-prose'], [class~='not-prose'] *)) > li + li,
+.rich-text ul > li + li,
 ul.wp-block-list:not(.is-style-checklist) > li + li {
   @apply mt-[0.75em];
 }
@@ -24,6 +29,7 @@ ul.wp-block-list:not(.is-style-checklist) > li + li {
 .prose
   ul:not(:where([class~='not-prose'], [class~='not-prose'] *))
   > li::before,
+.rich-text ul > li::before,
 ul.wp-block-list:not(.is-style-checklist) > li::before {
   content: '';
   @apply absolute top-[0.2em] left-0 block size-[1.5em] rounded-full border-2 border-yellow-dark;

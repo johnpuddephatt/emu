@@ -4,7 +4,9 @@
     @endif
 
     @if (!empty($item['text']))
-        <div class="prose mt-6 max-w-none">{!! $item['text'] !!}</div>
+        {{-- `.rich-text`, not `.prose`: the timeline section is `.not-prose`,
+             which the typography plugin's selectors can never re-enter. --}}
+        <div class="rich-text mt-6">{!! $item['text'] !!}</div>
     @endif
 
     @if (!empty($item['link']))

@@ -4,6 +4,7 @@
 @import './_content.css';
 @import './_type.css';
 @import './_prose.css';
+@import './_rich-text.css';
 @import './blocks/_backgrounds.css';
 @import './blocks/button.css';
 @import './blocks/details.css';

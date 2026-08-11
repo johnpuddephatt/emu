@@ -84,7 +84,9 @@
                                             <p class="mt-1 text-sm font-bold">{{ $person['role'] }}</p>
                                         @endif
 
-                                        <div class="prose mt-4 max-w-none">{!! $person['bio'] !!}</div>
+                                        {{-- `.rich-text`, not `.prose`: the grid above is `.not-prose`,
+                                             which the typography plugin's selectors can never re-enter. --}}
+                                        <div class="rich-text mt-4">{!! $person['bio'] !!}</div>
                                     </form>
                                 </div>
                             </dialog>
