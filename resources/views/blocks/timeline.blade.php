@@ -34,49 +34,48 @@
       --}}
                 <ul class="m-0 p-0 lg:grid lg:grid-cols-2 lg:gap-x-24 lg:gap-y-16">
                     @foreach ($items as $item)
-                        @if ($item['acf_fc_layout'] === 'whats_next')
-                            <li class="animate-enter-up relative mt-12 before:hidden! lg:col-span-2 lg:mt-20"
-                                style="grid-row: {{ $loop->iteration + 1 }}">
-                                @include('blocks.partials.timeline-whats-next', ['item' => $item])
-                            </li>
-                        @else
-                            <li @class([
-                                ' before:hidden! relative mx-auto max-w-sm lg:mx-0 lg:max-w-none flex items-center lg:[grid-row:var(--row)/span_2]',
-                                'mt-12 lg:mt-0' => !$loop->first,
-                                'lg:col-start-2 animate-enter-right' => $loop->even,
-                                'animate-enter-left' => !$loop->even,
-                            ]) style="--row: {{ $loop->iteration }}">
-                                {{-- Marker dot on the spine --}}
-                                <span aria-hidden="true" @class([
-                                    'hidden lg:block absolute top-1/2 size-10 -translate-y-1/2 rounded-full border-2 border-black bg-white',
-                                    '-right-12 translate-x-1/2' => !$loop->even,
-                                    '-left-12 -translate-x-1/2' => $loop->even,
-                                ])></span>
+                        <li @class([
+                            ' before:hidden! relative mx-auto max-w-sm lg:mx-0 lg:max-w-none flex items-center lg:[grid-row:var(--row)/span_2]',
+                            'mt-12 lg:mt-0' => !$loop->first,
+                            'lg:col-start-2 animate-enter-right' => $loop->even,
+                            'animate-enter-left' => !$loop->even,
+                        ]) style="--row: {{ $loop->iteration }}">
+                            {{-- Marker dot on the spine --}}
+                            <span aria-hidden="true" @class([
+                                'hidden lg:block absolute top-1/2 size-10 -translate-y-1/2 rounded-full border-2 border-black bg-white',
+                                '-right-12 translate-x-1/2' => !$loop->even,
+                                '-left-12 -translate-x-1/2' => $loop->even,
+                            ])></span>
 
-                                @include(
-                                    'blocks.partials.timeline-' . str_replace('_', '-', $item['acf_fc_layout']),
-                                    [
-                                        'item' => $item,
-                                        'flip' => $loop->even,
-                                        'color' => $palette[$loop->index % count($palette)],
-                                    ]
-                                )
+                            @include(
+                                'blocks.partials.timeline-' . str_replace('_', '-', $item['acf_fc_layout']),
+                                [
+                                    'item' => $item,
+                                    'flip' => $loop->even,
+                                    'color' => $palette[$loop->index % count($palette)],
+                                ]
+                            )
 
-                                {{-- Hand-drawn doodles scattered along the outer edges --}}
-                                @php(
+                            {{-- Hand-drawn doodles scattered along the outer edges --}}
+                            @php(
     $doodle = match ($loop->index % 3) {
         1 => 'star',
         2 => 'loop',
         default => null
     }
 )
-                                @if ($doodle)
-                                    @svg($doodle, 'pointer-events-none absolute hidden h-auto w-14 text-black lg:block ' . ($loop->even ? '-right-4 xl:-right-16 ' : '-left-4 xl:-left-16 ') . ($doodle === 'star' ? '-bottom-12 ' . ($loop->even ? 'rotate-12' : '-rotate-12') : '-top-8 ' . ($loop->even ? '-rotate-6' : 'rotate-6')))
-                                @endif
-                            </li>
-                        @endif
+                            @if ($doodle)
+                                @svg($doodle, 'pointer-events-none absolute hidden h-auto w-14 text-black lg:block ' . ($loop->even ? '-right-4 xl:-right-16 ' : '-left-4 xl:-left-16 ') . ($doodle === 'star' ? '-bottom-12 ' . ($loop->even ? 'rotate-12' : '-rotate-12') : '-top-8 ' . ($loop->even ? '-rotate-6' : 'rotate-6')))
+                            @endif
+                        </li>
                     @endforeach
                 </ul>
+            @endif
+
+            @if ($whatsNext)
+                <div class="animate-enter-up relative mt-12 lg:mt-20">
+                    @include('blocks.partials.timeline-whats-next', ['item' => $whatsNext])
+                </div>
             @endif
         </div>
     </section>

@@ -95,7 +95,11 @@ class Timeline extends Block
             ['acf_fc_layout' => 'card', 'image' => null, 'title' => 'Wild Pixels', 'text' => 'Working with artists and school pupils, Wild Pixels imagined what a greener East Marsh might look and sound like.'],
             ['acf_fc_layout' => 'stat', 'number' => '48%', 'text' => 'of our community have got involved in a creative project over the past two years.'],
             ['acf_fc_layout' => 'text', 'text' => '<strong>Local creatives</strong> work with us as equals, shaping projects from the ground up.'],
-            ['acf_fc_layout' => 'whats_next', 'title' => "What's next?", 'text' => 'There is plenty more to come.', 'link' => null],
+        ],
+        'whats_next' => [
+            'title' => "What's next?",
+            'text' => 'There is plenty more to come.',
+            'link' => null,
         ],
     ];
 
@@ -107,7 +111,25 @@ class Timeline extends Block
         return [
             'intro' => get_field('intro') ?: ($this->preview ? $this->example['intro'] : ''),
             'items' => get_field('items') ?: ($this->preview ? $this->example['items'] : []),
+            'whatsNext' => $this->whatsNext(),
         ];
+    }
+
+    /**
+     * The "What's next" panel, always rendered at the end of the timeline.
+     * Returns null unless the editor has filled something in — the example
+     * only stands in for the empty inserter preview, so a deliberately
+     * blank panel still previews as blank while editing.
+     */
+    protected function whatsNext(): ?array
+    {
+        $whatsNext = get_field('whats_next') ?: [];
+
+        if (array_filter($whatsNext)) {
+            return $whatsNext;
+        }
+
+        return $this->preview && ! get_field('items') ? $this->example['whats_next'] : null;
     }
 
     /**
@@ -156,14 +178,19 @@ class Timeline extends Block
                 ->addLayout('quote', ['label' => 'Quote'])
                     ->addTextarea('quote', ['rows' => 3, 'required' => true])
                     ->addText('citation', ['label' => 'Attribution'])
-                ->addLayout('whats_next', ['label' => "What's next"])
-                    ->addText('title', ['default_value' => "What's next?"])
-                    ->addWysiwyg('text', [
-                        'tabs' => 'visual',
-                        'toolbar' => 'minimal',
-                        'media_upload' => false,
-                    ])
-                    ->addLink('link');
+            ->endFlexibleContent()
+            ->addGroup('whats_next', [
+                'label' => "What's next",
+                'instructions' => 'Optional closing panel, always shown at the very end of the timeline.',
+            ])
+                ->addText('title', ['default_value' => "What's next?"])
+                ->addWysiwyg('text', [
+                    'tabs' => 'visual',
+                    'toolbar' => 'minimal',
+                    'media_upload' => false,
+                ])
+                ->addLink('link')
+            ->endGroup();
 
         return $fields->build();
     }
