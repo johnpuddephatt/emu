@@ -32,4 +32,9 @@ domReady(() => {
     name: 'lined',
     label: 'Lined',
   });
+
+  wp.blocks.registerBlockStyle('core/columns', {
+    name: 'cards',
+    label: 'Cards',
+  });
 });

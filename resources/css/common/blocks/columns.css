@@ -1,0 +1,29 @@
+.wp-block-columns.is-style-cards {
+    @apply relative grid list-none my-16 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6 xl:grid-cols-5;
+ }
+
+.wp-block-columns.is-style-cards > * {
+    @apply  relative flex items-center justify-center flex-col rounded-xl bg-white  shadow-md p-8 text-black;
+}
+.wp-block-columns.is-style-cards > *::before {
+    content: '';
+    @apply border-yellow pointer-events-none absolute inset-0 rotate-3 rounded-xl border-2 transition;
+}
+
+.wp-block-columns.is-style-cards > *:nth-child(4n-3)::before {
+    @apply rotate-3;
+}
+
+.wp-block-columns.is-style-cards > *:nth-child(4n-2)::before {
+    @apply -rotate-1;
+}
+
+.wp-block-columns.is-style-cards > *:nth-child(4n-1)::before {
+    @apply -rotate-3;
+}
+
+.wp-block-columns.is-style-cards > *:nth-child(4n)::before {
+    @apply rotate-1;
+}
+
+

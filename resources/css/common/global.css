@@ -1,12 +1,15 @@
 @import './_fonts.css';
 @import './_animations.css';
+@import './_loading-screen.css';
 @import './_content.css';
 @import './_type.css';
 @import './_prose.css';
 @import './blocks/_backgrounds.css';
 @import './blocks/button.css';
+@import './blocks/details.css';
 @import './blocks/heading.css';
 @import './blocks/list.css';
+@import './blocks/columns.css';
 @import './blocks/group.css';
 @import './blocks/paragraph.css';
 

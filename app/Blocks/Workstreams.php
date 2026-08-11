@@ -135,7 +135,9 @@ class Workstreams extends Block
         ]))->map(fn($workstream) => [
             'illustration' => get_post_thumbnail_id($workstream) ?: null,
             'title' => get_the_title($workstream),
-            'text' => get_the_excerpt($workstream),
+            'text' => get_field('strapline', $workstream->ID) ?: '',
+            // Only the "Rows" layout uses this, falling back to the strapline.
+            'short_description' => get_field('short_description', $workstream->ID) ?: '',
             'link' => [
                 'url' => get_permalink($workstream),
                 'title' => 'Read more',

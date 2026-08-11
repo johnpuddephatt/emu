@@ -1,0 +1,54 @@
+/*
+ * Homepage splash: the brand lines sweeping across black, then the whole
+ * overlay fading away. The SVG carries its own 2s animation, which draws the
+ * strokes on and straight back off again, so the fade picks up where that
+ * leaves off.
+ *
+ * `visibility: hidden` in the end state takes the overlay out of hit-testing
+ * once it's gone — opacity alone would leave an invisible sheet over the page.
+ */
+.loading-screen {
+  @apply fixed inset-0 z-[100] flex items-center justify-center overflow-hidden bg-black;
+
+  animation: loading-screen-out 350ms 2s forwards;
+}
+
+/* Full-height, like the old site's hero lines. The artwork spills past its
+   own viewBox, so the sweep runs off the top and bottom of the screen. */
+.loading-screen__lines {
+  @apply h-screen w-auto;
+}
+
+/*
+ * The logo sits centred over the lines and clears out half a second ahead of
+ * them, exactly as the old site staggered it (logo 1.5s, lines 2s).
+ */
+.loading-screen__logo {
+  @apply absolute top-1/2 left-1/2 w-40 -translate-x-1/2 -translate-y-1/2 lg:w-56;
+
+  animation: loading-screen-out 500ms 1.5s forwards;
+}
+
+/* Sits inside the badge outline, so it masks the lines behind the wordmark
+   without showing past the white shape. */
+.loading-screen__logo-backdrop {
+  @apply absolute inset-x-[10%] top-[10%] bottom-[26%] block rotate-[17.5deg] bg-black;
+}
+
+@keyframes loading-screen-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Already seen this session (set by the inline script in the partial). */
+.splash-seen .loading-screen {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-screen {
+    display: none;
+  }
+}

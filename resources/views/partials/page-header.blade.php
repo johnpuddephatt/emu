@@ -11,7 +11,12 @@
         default => null,
     };
     $thumbnail = $headerPost ? get_post_thumbnail_id($headerPost) : null;
-    $excerpt = $headerPost && has_excerpt($headerPost) ? get_the_excerpt($headerPost) : null;
+
+    // Workstreams carry a Strapline field in place of an excerpt, plus an
+    // Introduction below it. Everything else still uses its excerpt.
+    $standfirst = ($headerPost ? get_field('strapline', $headerPost) : null)
+        ?: ($headerPost && has_excerpt($headerPost) ? get_the_excerpt($headerPost) : null);
+    $introduction = $headerPost ? get_field('introduction', $headerPost) : null;
 @endphp
 
 <header class="has-black-background-color relative overflow-x-clip">
@@ -23,8 +28,12 @@
         <div class="relative z-20 self-center pb-12 lg:pb-20">
             <h1 class="text-4xl font-bold text-balance lg:text-5xl">{!! $title ?? get_the_title() !!}</h1>
 
-            @if ($excerpt)
-                <p class="mt-6 max-w-md leading-relaxed font-bold">{{ $excerpt }}</p>
+            @if ($standfirst)
+                <p class="mt-6 max-w-md leading-relaxed font-bold">{{ $standfirst }}</p>
+            @endif
+
+            @if ($introduction)
+                <p class="mt-4 max-w-md leading-relaxed">{!! nl2br(e($introduction)) !!}</p>
             @endif
         </div>
 

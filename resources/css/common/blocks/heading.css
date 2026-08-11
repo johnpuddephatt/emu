@@ -13,6 +13,11 @@ h6 {
   }
 }
 
+.prose-invert 
+:is(h1, h2, h3, h4, h5) {
+  @apply text-white;
+}
+
 /*
  * Hand-drawn "scribble box" around words in headings, ported from
  * the eastmarshunited 11ty site's emphasis() mixin: an ::after

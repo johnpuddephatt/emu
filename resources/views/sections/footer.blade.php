@@ -4,7 +4,7 @@
 
         <div class="max-w-md">
             <p class="font-bold">
-                {{ __('We are East Marsh United, a community group from Grimsby, growing our East Marsh home.', 'sage') }}
+                {{ bloginfo('description') }}
             </p>
             <p class="mt-4 text-sm text-white/70">
                 {{ __('East Marsh United is a registered charity (No. 1213614), incorporated on 4 November 2023.', 'sage') }}
@@ -14,14 +14,12 @@
         <div class="flex items-start gap-12 lg:gap-16">
             @if (has_nav_menu('footer_navigation'))
                 <nav aria-label="{{ wp_get_nav_menu_name('footer_navigation') }}">
-                    {!!
-                        wp_nav_menu([
-                            'theme_location' => 'footer_navigation',
-                            'menu_class' => 'grid list-none grid-cols-2 gap-x-12 gap-y-2 p-0 text-sm [&_a]:no-underline [&_a:hover]:underline',
-                            'container' => false,
-                            'echo' => false,
-                        ])
-                    !!}
+                    {!! wp_nav_menu([
+                        'theme_location' => 'footer_navigation',
+                        'menu_class' => 'grid list-none grid-cols-2 gap-x-12 gap-y-2 p-0 text-sm [&_a]:no-underline [&_a:hover]:underline',
+                        'container' => false,
+                        'echo' => false,
+                    ]) !!}
                 </nav>
             @endif
 

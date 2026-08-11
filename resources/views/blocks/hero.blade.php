@@ -1,4 +1,12 @@
 @unless ($block->preview)
+
+
+
+    @if (!is_front_page())
+        <a href="{{ home_url('/') }}" class="absolute top-4 left-4 z-30 lg:top-6 lg:left-6" aria-label="{{ $siteName }}">
+            @svg('logo', 'h-auto w-24 fill-white lg:w-28')
+        </a>
+    @endif
     <div {{ $attributes }}>
     @endunless
 

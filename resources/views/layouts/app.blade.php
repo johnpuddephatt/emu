@@ -1,5 +1,6 @@
 <!doctype html>
-<html @php(language_attributes())>
+<html @php(language_attributes()) class="xl:text-lg">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,8 +10,12 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body @php(body_class('font-sans'))>
+<body @php(body_class('font-sans '))>
     @php(wp_body_open())
+
+    @if (is_front_page())
+        @include('partials.loading-screen')
+    @endif
 
     <div id="app" class="relative">
         <a class="sr-only focus:not-sr-only" href="#main"> {{ __('Skip to content', 'sage') }} </a>
@@ -33,4 +38,5 @@
     @php(do_action('get_footer'))
     @php(wp_footer())
 </body>
+
 </html>

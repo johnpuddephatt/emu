@@ -7,7 +7,7 @@
 }
 
 .wp-block-group.has-background:not(.alignfull) {
-  @apply my-8 p-6 lg:p-10;
+  @apply my-8 lg:my-16 p-6 lg:p-10;
 }
 
 
@@ -21,3 +21,9 @@
   background: url('../../../icons/lines.svg') no-repeat center / cover;
   @apply pointer-events-none absolute right-0 bottom-0 w-[55%] aspect-[1.1/0.8];
 }
+
+
+.wp-block-group.has-background {
+    @apply rounded-3xl;
+}
+

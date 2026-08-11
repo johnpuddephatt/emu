@@ -7,7 +7,7 @@
   .animate-scroll-1 {
     view-timeline-name: --revealing-image;
     animation: linear scrollAnimation1 both;
-   understan: --revealing-image;
+   animation-timeline: --revealing-image;
   }
 
   .animate-scroll-2 {
