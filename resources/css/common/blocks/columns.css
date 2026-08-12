@@ -2,6 +2,41 @@
     @apply relative grid list-none my-16 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6 xl:grid-cols-5;
  }
 
+/*
+ * Five columns is the cap, not a fixed track count — a grid of five tracks
+ * leaves three cards sitting at 1/5 width each with dead space beside them.
+ * Each rule below caps the track count for blocks holding at most that many
+ * columns, so a short row stretches to fill the width instead.
+ *
+ * Counted as "has no Nth column" rather than `:last-child`, because the editor
+ * appends its own appender element after the last column. All four selectors
+ * share a specificity, so they must stay in descending order: the narrowest
+ * matching rule has to come last to win.
+ */
+.wp-block-columns.is-style-cards:not(:has(> .wp-block-column:nth-child(5))) {
+    @variant xl {
+        @apply grid-cols-4;
+    }
+}
+
+.wp-block-columns.is-style-cards:not(:has(> .wp-block-column:nth-child(4))) {
+    @variant xl {
+        @apply grid-cols-3;
+    }
+}
+
+.wp-block-columns.is-style-cards:not(:has(> .wp-block-column:nth-child(3))) {
+    @variant lg {
+        @apply grid-cols-2;
+    }
+}
+
+.wp-block-columns.is-style-cards:not(:has(> .wp-block-column:nth-child(2))) {
+    @variant sm {
+        @apply grid-cols-1;
+    }
+}
+
 .wp-block-columns.is-style-cards > * {
     @apply  relative flex items-center justify-center flex-col rounded-xl bg-white  shadow-md p-8 text-black;
 }
