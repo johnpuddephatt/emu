@@ -22,8 +22,16 @@
   display: none;
 }
 
-.editor-styles-wrapper {
-  @apply prose font-sans  2xl:text-lg;
+/*
+ * `@apply prose` copies the typography plugin's declarations onto the wrapper
+ * rather than adding a `prose` class, so the plugin's own heading sizes land
+ * here at the same specificity as the overrides in `common/_prose.css`. Kept in
+ * `@layer components` so those unlayered overrides win regardless of order.
+ */
+@layer components {
+  .editor-styles-wrapper {
+    @apply prose font-sans  2xl:text-lg;
+  }
 }
 
 /* .editor-styles-wrapper > div { */

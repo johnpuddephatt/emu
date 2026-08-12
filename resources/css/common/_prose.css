@@ -1,29 +1,43 @@
+/*
+ * Heading sizes for prose content.
+ *
+ * `.editor-styles-wrapper` is listed alongside `.prose` throughout because
+ * editor.css styles the canvas with `@apply prose`. That copies the typography
+ * plugin's declarations onto the wrapper but puts no `prose` class in the DOM,
+ * so a plain `.prose h4 {}` matches nothing in the editor — headings fall back
+ * to the plugin's defaults, and since its h4 sets no font-size at all, WP's
+ * `reset.min.css` (`font-size: revert` on `:where(.editor-styles-wrapper) h1-h6`)
+ * leaves h4 at the inherited body size.
+ *
+ * Unlayered on purpose (the plugin emits into `utilities`, which beats
+ * `components` in v4's cascade). The `@apply prose` in editor.css is wrapped in
+ * `@layer components` so these rules win there whatever the source order.
+ */
 
-
-.prose :where(h1):not(:where([class~="not-prose"], [class~="not-prose"] *)),
-.prose :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *))
+:is(.prose, .editor-styles-wrapper) :where(h1):not(:where([class~="not-prose"], [class~="not-prose"] *)),
+:is(.prose, .editor-styles-wrapper) :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *))
 {
     @apply type-xl;
 }
 
 
-.prose :where(h3):not(:where([class~="not-prose"], [class~="not-prose"] *))
+:is(.prose, .editor-styles-wrapper) :where(h3):not(:where([class~="not-prose"], [class~="not-prose"] *))
 {
     @apply type-lg;
 }
 
-.prose :where(h4):not(:where([class~="not-prose"], [class~="not-prose"] *))
+:is(.prose, .editor-styles-wrapper) :where(h4):not(:where([class~="not-prose"], [class~="not-prose"] *))
 {
     @apply type-md;
 }
 
 
-.prose :where(h1):not(:where([class~="not-prose"], [class~="not-prose"] *)),
-.prose :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)),
-.prose :where(h3):not(:where([class~="not-prose"], [class~="not-prose"] *)),
-.prose :where(h4):not(:where([class~="not-prose"], [class~="not-prose"] *)),
-.prose :where(h5):not(:where([class~="not-prose"], [class~="not-prose"] *)),
-.prose :where(h6):not(:where([class~="not-prose"], [class~="not-prose"] *))
+:is(.prose, .editor-styles-wrapper) :where(h1):not(:where([class~="not-prose"], [class~="not-prose"] *)),
+:is(.prose, .editor-styles-wrapper) :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)),
+:is(.prose, .editor-styles-wrapper) :where(h3):not(:where([class~="not-prose"], [class~="not-prose"] *)),
+:is(.prose, .editor-styles-wrapper) :where(h4):not(:where([class~="not-prose"], [class~="not-prose"] *)),
+:is(.prose, .editor-styles-wrapper) :where(h5):not(:where([class~="not-prose"], [class~="not-prose"] *)),
+:is(.prose, .editor-styles-wrapper) :where(h6):not(:where([class~="not-prose"], [class~="not-prose"] *))
 {
     @apply first:mt-0 text-inherit;
 }
