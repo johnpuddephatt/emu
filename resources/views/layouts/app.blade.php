@@ -1,5 +1,5 @@
 <!doctype html>
-<html @php(language_attributes()) class="xl:text-lg">
+<html @php(language_attributes()) class="3xl:text-lg">
 
 <head>
     <meta charset="utf-8" />
