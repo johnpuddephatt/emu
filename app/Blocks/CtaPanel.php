@@ -85,7 +85,7 @@ class CtaPanel extends Block
      *
      * @var array
      */
-    public $styles = ['dark', 'light'];
+    public $styles = ['dark', 'light', 'light_alt'];
 
     /**
      * The supported block features.

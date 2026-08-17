@@ -58,14 +58,27 @@
 
                             {{-- Hand-drawn doodles scattered along the outer edges --}}
                             @php(
-    $doodle = match ($loop->index % 3) {
+    $doodle = match ($loop->index % 5) {
         1 => 'star',
-        2 => 'loop',
+        2 => 'spiral',
+        0 => 'arrow',
         default => null
     }
 )
                             @if ($doodle)
-                                @svg($doodle, 'pointer-events-none absolute hidden h-auto w-14 text-black lg:block ' . ($loop->even ? '-right-4 xl:-right-16 ' : '-left-4 xl:-left-16 ') . ($doodle === 'star' ? '-bottom-12 ' . ($loop->even ? 'rotate-12' : '-rotate-12') : '-top-8 ' . ($loop->even ? '-rotate-6' : 'rotate-6')))
+                                @svg(
+                                    $doodle,
+                                    ' pointer-events-none absolute hidden h-auto w-14 lg:block ' .
+                                        ($loop->even ? '-right-4 xl:-right-16 ' : '-left-4 xl:-left-16 ') .
+                                        ($doodle === 'star' ? '-bottom-12  text-yellow' . ($loop->even ? 'rotate-12' : '-rotate-12') : '-top-8 ' . ($loop->even ? '-rotate-6' : 'rotate-6')) .
+                                        match (($loop->index + 2) % 7) {
+                                            1 => ' text-yellow',
+                                            2 => ' text-red',
+                                            3 => ' text-blue',
+                                            4 => ' text-green',
+                                            default => ' text-black',
+                                        }
+                                )
                             @endif
                         </li>
                     @endforeach

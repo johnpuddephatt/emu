@@ -5,8 +5,10 @@
  * line up with the question.
  */
 .wp-block-details {
-  @apply border-2 rounded-xl border-green;
+  @apply rounded-xl bg-green-soft before:inset-0 before:pointer-events-none before:absolute relative before:border-green before:border-2 before:rounded-xl before:rotate-1 odd:before:-rotate-1 hover:before:rotate-0 before:transition;
 }
+
+
 
 /*
  * Consecutive details blocks read as one list, so the block gap
@@ -14,23 +16,27 @@
  * come from the typography plugin's utilities layer.
  */
 .wp-block-details + .wp-block-details {
-  @apply !mt-4;
+  @apply !mt-6;
 }
 
 .wp-block-details > summary {
-  @apply cursor-pointer py-3 pl-2 type-sm;
+  @apply cursor-pointer py-3 pl-6 type-sm;
 }
 
 .wp-block-details > summary::marker {
   @apply text-green;
 }
 
+.wp-block-details[open] {
+@apply before:rotate-0!;
+}
+
 .wp-block-details[open] > summary {
-  @apply pb-2;
+  @apply pb-2 ;
 }
 
 .wp-block-details > :not(summary) {
-  @apply my-0 pl-8;
+  @apply my-0 pl-8!;
 }
 
 .wp-block-details > :not(summary) + :not(summary) {
