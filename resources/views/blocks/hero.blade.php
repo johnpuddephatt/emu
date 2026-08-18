@@ -13,7 +13,7 @@
     @if ($block->style === 'split')
         <section class="wp-block alignfull has-black-background-color animate-scroll-section relative overflow-x-clip">
             <div
-                class="max-w-wide min-h-200 lg:min-h-240 relative mx-auto grid items-center gap-12  px-4 md:px-6 lg:px-8 xl:px-12 pt-36 pb-24 lg:grid-cols-2 lg:gap-20 lg:py-32">
+                class="max-w-wide min-h-200  relative mx-auto grid items-center gap-12  px-4 md:px-6 lg:px-8 xl:px-12 pt-36 pb-24 lg:grid-cols-2 lg:gap-20 lg:py-32">
                 <div class="prose prose-invert [&_.has-text-align-center]:text-left [&_.wp-block-buttons]:justify-start">
                     <InnerBlocks template="{{ $block->template }}" />
                 </div>
@@ -32,7 +32,7 @@
                         deliberately draw different `animate-scroll-*` keyframes so they
                         separate rather than drift as a block.
                     --}}
-                    <div class="relative lg:h-120">
+                    <div class="relative lg:h-160">
                         @foreach ($images as $image)
                             {!! wp_get_attachment_image($image, 'large', false, [
                                 'sizes' => '(min-width: 1200px) 25vw, (min-width: 800px) 35vw, 50vw',
