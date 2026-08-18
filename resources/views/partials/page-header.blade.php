@@ -25,7 +25,7 @@
     </div>
 
     <div class="max-w-wide relative mx-auto grid gap-x-12  px-4 md:px-6 lg:px-8 xl:px-12  pt-32 lg:grid-cols-2 lg:pt-36">
-        <div class="relative z-20 self-center pb-12 lg:pb-20">
+        <div class="relative z-20 self-center py-12 lg:py-20">
             <h1 class="text-4xl font-bold text-balance lg:text-5xl">{!! $title ?? get_the_title() !!}</h1>
 
             @if ($standfirst)

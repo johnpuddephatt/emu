@@ -41,12 +41,12 @@
                                     (($loop->index % 3) + 1) .
                                     ' ' .
                                     match ($loop->index) {
-                                        0 => 'top-0 left-0 z-10 lg:max-w-60',
-                                        1 => 'bottom-0 right-0 z-10 lg:max-w-52',
+                                        0 => 'top-0 -left-1/12 z-10 lg:max-w-60',
+                                        1 => 'top-0 right-0 z-10 lg:max-w-52',
                                         2 => 'hidden lg:block lg:top-[4%] lg:right-[2%] lg:max-w-44',
-                                        3 => 'top-[36%] left-[14%] lg:top-[38%] lg:left-[10%] lg:max-w-48',
+                                        3 => 'bottom-0 left-1/4 lg:top-[38%] lg:left-[10%] lg:max-w-48',
                                         4 => 'hidden lg:block lg:bottom-[6%] lg:left-0 lg:max-w-40',
-                                        5 => 'bottom-0 left-0 lg:bottom-auto lg:top-[34%] lg:left-[42%] lg:max-w-40',
+                                        5 => 'bottom-0 left-7/12 lg:bottom-auto lg:top-[34%] lg:left-[42%] lg:max-w-40',
                                         default => 'hidden',
                                     },
                             ]) !!}
@@ -76,8 +76,8 @@
                                 ' ' .
                                 match ($loop->index) {
                                     0 => 'top-16 left-4 lg:top-1/5 lg:left-auto lg:right-full lg:translate-x-24 ',
-                                    3 => 'hidden lg:block lg:top-11/12   lg:right-0  ',
-                                    1 => 'hidden lg:block lg:top-5/6 lg:right-2/3  ',
+                                    3 => 'hidden lg:block lg:top-10/12   lg:right-0  ',
+                                    1 => 'hidden lg:block lg:top-11/12 lg:right-2/3  ',
                                     2 => 'bottom-0 left-8 lg:bottom-auto lg:top-1/2 lg:left-auto lg:right-full lg:-translate-x-24 ',
                                     5 => 'hidden lg:block lg:top-2/3 lg:left-full lg:translate-x-32 ',
                                     4 => 'top-4 right-4 lg:top-1/5 lg:right-auto lg:left-full lg:translate-x-10 ',
