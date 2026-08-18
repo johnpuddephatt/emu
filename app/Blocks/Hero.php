@@ -137,7 +137,7 @@ class Hero extends Block
         $fields
             ->addGallery('photos', [
                 'label' => 'Collage photos',
-                'instructions' => 'Up to 8 photos floating around the welcome message — the first 4 on the left, the rest on the right. They parallax as the page scrolls.',
+                'instructions' => 'Four to six photos, scattered around the welcome message in the Centered layout or collaged beside it in the Split layout. They parallax as the page scrolls. On small screens the third and fifth photos are dropped.',
                 'return_format' => 'id',
                 'min' => 4,
                 'max' => 6,

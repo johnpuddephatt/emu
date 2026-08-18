@@ -30,34 +30,21 @@
 @section('content')
     @include('partials.page-header')
 
-    <div
-        class="max-w-wide mx-auto px-4 py-16 md:px-8 lg:py-24"
-        x-data="{ tab: window.location.hash === '#past' ? 'past' : 'upcoming' }"
-        x-init="
-            $watch('tab', (v) =>
-                history.replaceState(null, '', v === 'past' ? '#past' : location.pathname + location.search),
-            )
-        "
-    >
+    <div class="max-w-wide mx-auto   px-4 md:px-6 lg:px-8 xl:px-12 py-16 lg:py-24" x-data="{ tab: window.location.hash === '#past' ? 'past' : 'upcoming' }"
+        x-init="$watch('tab', (v) =>
+            history.replaceState(null, '', v === 'past' ? '#past' : location.pathname + location.search),
+        )">
         <div class="mb-12 flex flex-wrap gap-3" role="group" aria-label="{{ __('Filter events', 'sage') }}">
-            <button
-                type="button"
-                @click="tab = 'upcoming'"
-                :aria-pressed="tab === 'upcoming'"
+            <button type="button" @click="tab = 'upcoming'" :aria-pressed="tab === 'upcoming'"
                 :class="tab === 'upcoming' ? 'bg-black text-white' : 'text-black hover:bg-black/5'"
-                class="rounded-full border border-black/15 px-6 py-2 text-sm font-bold transition duration-300"
-            >
+                class="rounded-full border border-black/15 px-6 py-2 text-sm font-bold transition duration-300">
                 {{ __('Upcoming', 'sage') }}
                 <span class="opacity-60">({{ $upcoming->found_posts }})</span>
             </button>
 
-            <button
-                type="button"
-                @click="tab = 'past'"
-                :aria-pressed="tab === 'past'"
+            <button type="button" @click="tab = 'past'" :aria-pressed="tab === 'past'"
                 :class="tab === 'past' ? 'bg-black text-white' : 'text-black hover:bg-black/5'"
-                class="rounded-full border border-black/15 px-6 py-2 text-sm font-bold transition duration-300"
-            >
+                class="rounded-full border border-black/15 px-6 py-2 text-sm font-bold transition duration-300">
                 {{ __('Past', 'sage') }}
                 <span class="opacity-60">({{ $past->found_posts }})</span>
             </button>

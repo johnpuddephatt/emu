@@ -13,27 +13,40 @@
     @if ($block->style === 'split')
         <section class="wp-block alignfull has-black-background-color animate-scroll-section relative overflow-x-clip">
             <div
-                class="max-w-wide relative mx-auto grid items-center gap-12 px-4 pt-16 pb-24 lg:grid-cols-2 lg:gap-20 lg:py-32">
+                class="max-w-wide min-h-200 lg:min-h-240 relative mx-auto grid items-center gap-12  px-4 md:px-6 lg:px-8 xl:px-12 pt-36 pb-24 lg:grid-cols-2 lg:gap-20 lg:py-32">
                 <div class="prose prose-invert [&_.has-text-align-center]:text-left [&_.wp-block-buttons]:justify-start">
                     <InnerBlocks template="{{ $block->template }}" />
                 </div>
 
                 @if ($images)
-                    <div class="relative min-h-96 lg:min-h-[34rem]">
+                    {{--
+                        Six slots scattered over the box, ordered so that any prefix
+                        stays balanced — the gallery allows 4-6 photos, so slots 0-3
+                        already cover top, middle and bottom, and 4-5 fill the gaps
+                        rather than starting a new band. `max-h` matters as much as
+                        `max-w`: portrait shots are otherwise tall enough to swallow two
+                        bands on their own. Indexes 2 and 4 drop out below `lg`.
+
+                        Positions are only half the story — the parallax swings each
+                        photo through up to 40vh of travel, and neighbouring indexes
+                        deliberately draw different `animate-scroll-*` keyframes so they
+                        separate rather than drift as a block.
+                    --}}
+                    <div class="relative ">
                         @foreach ($images as $image)
                             {!! wp_get_attachment_image($image, 'large', false, [
                                 'sizes' => '(min-width: 1200px) 25vw, (min-width: 800px) 35vw, 50vw',
                                 'class' =>
-                                    '!my-0 absolute h-auto rounded-lg w-auto max-w-36 lg:max-w-64 animate-scroll-' .
+                                    '!my-0 absolute h-auto rounded-lg w-auto max-w-36 max-h-48 lg:max-w-52 lg:max-h-64 animate-scroll-' .
                                     (($loop->index % 3) + 1) .
                                     ' ' .
                                     match ($loop->index) {
-                                        0 => 'bottom-0 left-1/4 z-10 translate-y-1/4 lg:max-w-72',
-                                        1 => 'top-0 left-0 z-10 lg:max-w-72',
-                                        2 => 'hidden lg:block lg:top-2/3 lg:right-4 lg:max-w-40',
-                                        1 => 'top-16 left-1/2 -translate-x-1/3 max-w-28 lg:max-w-44',
-                                        4 => 'hidden lg:block lg:top-1/2 lg:left-0 lg:max-w-36',
-                                        5 => 'top-32 right-0 lg:top-40 lg:max-w-56',
+                                        0 => 'top-0 left-0 z-10 lg:max-w-60',
+                                        1 => 'bottom-0 right-0 z-10 lg:max-w-52',
+                                        2 => 'hidden lg:block lg:top-[4%] lg:right-[2%] lg:max-w-44',
+                                        3 => 'top-[36%] left-[14%] lg:top-[38%] lg:left-[10%] lg:max-w-48',
+                                        4 => 'hidden lg:block lg:bottom-[6%] lg:left-0 lg:max-w-40',
+                                        5 => 'bottom-0 left-0 lg:bottom-auto lg:top-[34%] lg:left-[42%] lg:max-w-40',
                                         default => 'hidden',
                                     },
                             ]) !!}
@@ -58,16 +71,16 @@
                         {!! wp_get_attachment_image($image, 'large', false, [
                             'sizes' => '(min-width: 1200px) 30vw, (min-width: 800px) 40vw, 50vw',
                             'class' =>
-                                '!my-0 absolute z-10 h-auto rounded-lg w-auto max-w-36 lg:max-w-72 lg:max-h-72 animate-scroll-' .
+                                '!my-0 absolute z-10 h-auto max-h-48 rounded-lg w-auto max-w-48 lg:max-w-72 lg:max-h-72 animate-scroll-' .
                                 (($loop->index % 4) + 1) .
                                 ' ' .
                                 match ($loop->index) {
-                                    0 => '-top-4 left-4 lg:top-1/5 lg:left-auto lg:right-full lg:translate-x-24 ',
+                                    0 => 'top-16 left-4 lg:top-1/5 lg:left-auto lg:right-full lg:translate-x-24 ',
                                     3 => 'hidden lg:block lg:top-11/12   lg:right-0  ',
                                     1 => 'hidden lg:block lg:top-5/6 lg:right-2/3  ',
                                     2 => 'bottom-0 left-8 lg:bottom-auto lg:top-1/2 lg:left-auto lg:right-full lg:-translate-x-24 ',
                                     5 => 'hidden lg:block lg:top-2/3 lg:left-full lg:translate-x-32 ',
-                                    4 => '-top-4 right-4 lg:top-1/5 lg:right-auto lg:left-full lg:translate-x-10 ',
+                                    4 => 'top-4 right-4 lg:top-1/5 lg:right-auto lg:left-full lg:translate-x-10 ',
                                     default => 'hidden',
                                 },
                         ]) !!}
