@@ -38,16 +38,17 @@
                 @if ($events)
                     <ul class="mt-8 list-none space-y-8 p-0">
                         @foreach ($events as $event)
-                            <li class=" relative p-6">
+                            <li class=" relative p-6 bg-white rounded-xl group">
                                 <div
-                                    class="border-2  border-yellow rounded-xl absolute inset-0 {{ $loop->odd ? '-rotate-1' : 'rotate-1' }} ">
+                                    class="pointer-events-none border-2  border-yellow group-hover:rotate-0 transition  rounded-xl absolute inset-0 {{ $loop->odd ? '-rotate-1' : 'rotate-1' }} ">
                                 </div>
                                 @if ($start = get_field('start', $event->ID))
                                     <time datetime="{{ date('c', strtotime($start)) }}"
                                         class="mb-2 block text-sm font-bold">{{ wp_date('D jS M', strtotime($start)) }}</time>
                                 @endif
                                 <h3 class="type-md mb-2">
-                                    <a href="{{ get_permalink($event) }}" class="no-underline hover:underline">
+                                    <a href="{{ get_permalink($event) }}"
+                                        class="before:inset-0 before:absolute no-underline hover:underline">
                                         {{ get_the_title($event) }}
                                     </a>
                                 </h3>
