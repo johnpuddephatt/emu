@@ -1,4 +1,4 @@
-<footer class="has-black-background-color mt-16">
+<footer class="has-black-background-color">
     <div
         class="max-w-wide mx-auto grid items-start gap-10  px-4 md:px-6 lg:px-8 xl:px-12 py-12 lg:grid-cols-[auto_1fr_auto] lg:gap-16 lg:py-16">
         @svg('logo', 'w-24 h-auto flex-none fill-white')
