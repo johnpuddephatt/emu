@@ -32,7 +32,7 @@
                         deliberately draw different `animate-scroll-*` keyframes so they
                         separate rather than drift as a block.
                     --}}
-                    <div class="relative ">
+                    <div class="relative lg:h-120">
                         @foreach ($images as $image)
                             {!! wp_get_attachment_image($image, 'large', false, [
                                 'sizes' => '(min-width: 1200px) 25vw, (min-width: 800px) 35vw, 50vw',
