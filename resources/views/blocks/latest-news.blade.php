@@ -13,7 +13,7 @@
 
             @if ($featured)
                 <article class="group relative mt-10 grid items-center gap-8 lg:grid-cols-2">
-                    <div class="overflow-hidden">
+                    <div class="overflow-hidden rounded-xl">
                         @if (has_post_thumbnail($featured))
                             {!! get_the_post_thumbnail($featured, 'large', [
                                 'class' => 'aspect-[4/3] w-full object-cover group-hover:scale-105 duration-500 transition',
@@ -41,7 +41,7 @@
                 <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:mt-24 lg:grid-cols-3 lg:gap-16">
                     @foreach ($posts as $post)
                         <article class="group relative">
-                            <div class="overflow-hidden">
+                            <div class="overflow-hidden rounded-xl">
                                 @if (has_post_thumbnail($post))
                                     {!! get_the_post_thumbnail($post, 'medium_large', [
                                         'class' => 'aspect-[4/3] w-full object-cover group-hover:scale-105 duration-1000 transition',
