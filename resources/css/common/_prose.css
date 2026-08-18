@@ -15,7 +15,7 @@
  */
 
 
- .prose {
+ .prose:not(.prose-invert) {
 color: #000;
  }
 

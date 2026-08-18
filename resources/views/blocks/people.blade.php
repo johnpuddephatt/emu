@@ -31,7 +31,7 @@ $id = 'person-' . $person['anchor'];
                                 } }}">
                                 @if ($person['photo'])
                                     {!! wp_get_attachment_image($person['photo'], 'medium_large', false, [
-                                        'class' => 'size-full object-contain object-bottom',
+                                        'class' => 'size-full object-cover object-bottom',
                                         'sizes' => '(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw',
                                     ]) !!}
                                 @endif
