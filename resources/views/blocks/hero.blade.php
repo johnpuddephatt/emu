@@ -42,7 +42,7 @@
                                     ' ' .
                                     match ($loop->index) {
                                         0 => 'top-0 -left-1/12 z-10 lg:max-w-60',
-                                        1 => 'top-0 right-0 z-10 lg:max-w-52',
+                                        1 => 'top-0 lg:top-7/12 right-0 z-10 lg:max-w-52',
                                         2 => 'hidden lg:block lg:top-[4%] lg:right-[2%] lg:max-w-44',
                                         3 => 'bottom-0 left-1/4 lg:top-[38%] lg:left-[10%] lg:max-w-48',
                                         4 => 'hidden lg:block lg:bottom-[6%] lg:left-0 lg:max-w-40',
