@@ -14,6 +14,12 @@
  * `@layer components` so these rules win there whatever the source order.
  */
 
+
+ .prose {
+color: #000;
+ }
+
+
 :is(.prose, .editor-styles-wrapper) :where(h1):not(:where([class~="not-prose"], [class~="not-prose"] *)),
 :is(.prose, .editor-styles-wrapper) :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *))
 {

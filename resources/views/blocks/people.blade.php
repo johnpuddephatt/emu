@@ -23,7 +23,7 @@ $id = 'person-' . $person['anchor'];
 
                         <li class="flex flex-col">
                             <div
-                                class=" aspect-[3/4] overflow-hidden rounded-xl {{ match ($loop->index % 4) {
+                                class=" aspect-[2] overflow-hidden rounded-xl {{ match ($loop->index % 4) {
                                     0 => 'bg-red-soft',
                                     1 => 'bg-blue-soft',
                                     2 => 'bg-green-soft',
