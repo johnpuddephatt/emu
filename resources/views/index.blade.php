@@ -17,13 +17,17 @@
             @endwhile
         </div>
 
-        {!!
-            get_the_posts_pagination([
-                'mid_size' => 2,
-                'prev_text' => __('&larr; Newer', 'sage'),
-                'next_text' => __('Older &rarr;', 'sage'),
-                'class' => 'mt-16 [&_.nav-links]:flex [&_.nav-links]:flex-wrap [&_.nav-links]:justify-center [&_.nav-links]:gap-4 [&_.page-numbers]:font-bold [&_.page-numbers.current]:text-gray [&_a]:no-underline [&_a:hover]:underline',
-            ])
-        !!}
+        {{-- WP runs the pagination `class` arg through sanitize_html_class(),
+             so it can only take one class — spacing goes on a wrapper. --}}
+        @if ($pagination = get_the_posts_pagination([
+            'mid_size' => 2,
+            'prev_text' => __('&larr; Newer', 'sage'),
+            'next_text' => __('Older &rarr;', 'sage'),
+            'class' => 'pagination',
+        ]))
+            <div class="mt-16">
+                {!! $pagination !!}
+            </div>
+        @endif
     </div>
 @endsection

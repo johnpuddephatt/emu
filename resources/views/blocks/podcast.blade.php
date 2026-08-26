@@ -2,9 +2,9 @@
     <div {{ $attributes }}>
 @endunless
 
-<section class="wp-block alignfull has-black-background-color relative py-12 lg:py-20">
-    <div class="max-w-wide mx-auto px-4">
-        <div class="prose prose-invert max-w-content">
+<section class="wp-block alignfull is-bleed has-black-background-color relative py-12 lg:py-20">
+    <div class="max-w-content mx-auto px-4">
+        <div class="prose prose-invert">
             <InnerBlocks template="{{ $block->template }}" />
         </div>
 
@@ -13,7 +13,7 @@
                  ends the tag as far as wptexturize is concerned, and it then
                  curly-quotes the rest of the attribute into a syntax error. --}}
             <div
-                class="not-prose mt-8 max-w-xl"
+                class="not-prose mt-8"
                 x-data="{
                     current: null,
                     playing: false,
@@ -47,7 +47,7 @@
                     class="hidden"
                 ></audio>
 
-                <ul class="m-0 max-h-80 list-none overflow-y-auto p-0">
+                <ul class="m-0 max-h-96 list-none overflow-y-auto p-0 lg:max-h-120">
                     @foreach ($episodes as $episode)
                         <li class="border-gray/50 border-b border-dotted last:border-0">
                             @if ($episode['upcoming'] || ! $episode['audio'])

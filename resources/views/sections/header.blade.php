@@ -10,7 +10,7 @@
 
     <div x-cloak x-show="open" x-transition.opacity.duration.300ms @keydown.escape.window="open = false"
         class="has-black-background-color fixed inset-0 z-50 flex flex-col">
-        <div class="flex justify-end p-4 lg:p-6">
+        <div class="flex justify-end px-4 md:px-6 lg:px-8 xl:px-12 py-4 lg:py-8 lg:p-6">
             <button type="button" class="flex items-center gap-2 font-bold" @click="open = false"
                 aria-label="{{ __('Close menu', 'sage') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"

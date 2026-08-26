@@ -30,7 +30,7 @@
   --max-width-9xl: 100rem;
 }
 
-@theme {
+@theme {  
   --breakpoint-3xl: 120rem;
 }
 

@@ -35,6 +35,6 @@
     </h3>
 
     @if (get_the_excerpt())
-        <p class="entry-summary mt-2 mb-0 text-sm leading-relaxed">{{ get_the_excerpt() }}</p>
+        <p class="entry-summary mt-2 mb-0 text-sm leading-relaxed">{!! get_the_excerpt() !!}</p>
     @endif
 </article>

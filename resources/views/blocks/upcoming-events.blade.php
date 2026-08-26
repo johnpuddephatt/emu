@@ -8,8 +8,8 @@
     <div {{ $attributes }}>
     @endunless
 
-    <section class="wp-block alignfull bg-cream relative overflow-x-clip">
-        <div class="max-w-wide mx-auto grid items-center gap-10 px-4 lg:grid-cols-2">
+    <section class="wp-block alignfull is-bleed bg-cream relative overflow-x-clip">
+        <div class="max-w-wide mx-auto grid items-center gap-10  px-4 md:px-6 lg:px-8 xl:px-12 lg:grid-cols-2">
             <div class="hidden self-end lg:block {{ $animate ? 'animate-reveal-scope' : '' }}">
                 @svg('lines_alt', 'absolute left-0 bottom-0 h-[calc(100%+6rem)] w-auto')
                 @if ($illustration)

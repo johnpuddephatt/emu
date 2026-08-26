@@ -5,6 +5,7 @@
 @import './_type.css';
 @import './_prose.css';
 @import './_rich-text.css';
+@import './_pagination.css';
 @import './blocks/_backgrounds.css';
 @import './blocks/image.css';
 @import './blocks/button.css';
@@ -17,6 +18,26 @@
 
 [x-cloak] {
   display: none;
+}
+
+/*
+ * Decorative elements deliberately sit outside their block — rotated
+ * outlines, doodles, parallax photos. Vertically that's the point;
+ * horizontally it drags a scrollbar onto phones (the rotated CTA-panel
+ * frame put /join-us/ 5px over). `clip` rather than `hidden`: it doesn't
+ * make a scroll container, so sticky and scroll-driven animations inside
+ * still work, and `overflow-y` stays visible.
+ */
+main {
+  overflow-x: clip;
+}
+
+/*
+ * WP core emits .screen-reader-text headings/labels (pagination,
+ * comment and search forms) and expects the theme to hide them.
+ */
+.screen-reader-text:not(:focus) {
+  @apply sr-only;
 }
 
 /*

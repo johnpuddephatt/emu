@@ -12,7 +12,7 @@
             </p>
         </div>
 
-        <div class="flex items-start gap-12 lg:gap-16">
+        <div class="flex flex-wrap items-start gap-x-12 gap-y-8 lg:flex-nowrap lg:gap-16">
             @if (has_nav_menu('footer_navigation'))
                 <nav aria-label="{{ wp_get_nav_menu_name('footer_navigation') }}">
                     {!! wp_nav_menu([
@@ -24,7 +24,7 @@
                 </nav>
             @endif
 
-            <div class="wp-block-button is-style-primary">
+            <div class="wp-block-button is-style-primary flex-none">
                 <a class="wp-block-button__link wp-element-button" href="{{ home_url('/donate') }}">
                     {{ __('Donate', 'sage') }}
                 </a>

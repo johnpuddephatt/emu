@@ -20,6 +20,26 @@ add_filter('excerpt_length', function () {
     return 30;
 });
 
+/**
+ * Drop paragraph blocks the editor left empty.
+ *
+ * They add a phantom line of space wherever they land, and a trailing one
+ * sits between a full-bleed block and the end of the content wrapper —
+ * which stops `.page-content` collapsing its padding there (see
+ * `_content.css`). A paragraph holding only a non-breaking space is left
+ * alone: that one was typed on purpose.
+ *
+ * @param  string  $html
+ * @return string
+ */
+add_filter('render_block_core/paragraph', function ($html) {
+    if (preg_match('/<(img|br|iframe|svg|video|audio)\b/i', $html)) {
+        return $html;
+    }
+
+    return trim(wp_strip_all_tags($html)) === '' ? '' : $html;
+});
+
 
 /**
  * Register a minimal toolbar for ACF wysiwyg fields — just bold,

@@ -34,3 +34,23 @@
   width: 100vw;
   margin-inline: calc(-50vw + 50%);
 }
+
+/*
+ * Sections marked `is-bleed` paint their own background edge to edge.
+ * Where one opens or closes the content, the wrapper's vertical padding
+ * shows through as a band of page background between it and the page
+ * header or the footer — the podcast page had one at each end. Those
+ * sections carry their own vertical padding, so nothing is left cramped.
+ *
+ * Deliberately keyed on `is-bleed` and not on `.alignfull`: a full-width
+ * block with no background of its own (impact stats, timeline, the
+ * signpost) has no band to hide, and dropping the padding there would
+ * just pull the footer up against it.
+ */
+.page-content:has(> :first-child .is-bleed) {
+  padding-top: 0;
+}
+
+.page-content:has(> :last-child .is-bleed) {
+  padding-bottom: 0;
+}

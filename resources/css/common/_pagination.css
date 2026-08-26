@@ -1,0 +1,42 @@
+/*
+ * Posts pagination (get_the_posts_pagination). WP core markup is
+ * nav.pagination > div.nav-links > a/span.page-numbers, with .current,
+ * .dots, .prev and .next as modifiers on the page-numbers elements.
+ */
+.pagination .nav-links {
+  @apply flex flex-wrap items-center justify-center gap-2;
+}
+
+.pagination .page-numbers {
+  @apply inline-flex h-11 min-w-11 items-center justify-center rounded-md px-3
+    text-sm font-bold no-underline transition duration-300;
+}
+
+.pagination a.page-numbers:hover {
+  @apply bg-gray-light;
+}
+
+.pagination .page-numbers.current {
+  @apply bg-black text-white;
+}
+
+.pagination .page-numbers.dots {
+  @apply text-gray min-w-0 px-1;
+}
+
+/* Prev/next carry a word as well as an arrow, so they need more room. */
+.pagination .page-numbers.prev,
+.pagination .page-numbers.next {
+  @apply px-4;
+}
+
+/*
+ * Inside dark sections the neutrals flip, same as buttons/links do.
+ */
+.has-black-background-color .pagination a.page-numbers:hover {
+  @apply bg-gray text-white;
+}
+
+.has-black-background-color .pagination .page-numbers.current {
+  @apply bg-white text-black;
+}

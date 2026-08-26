@@ -3,11 +3,14 @@
     'message' => null,
 ])
 
+{{-- The default Tailwind palette is reset in _tailwind-config.css, so the
+     stock numbered colours (green-400, indigo-50 …) don't exist. These map
+     onto the brand tints instead. --}}
 @php($class = match ($type) {
-  'success' => 'text-green-50 bg-green-400',
-  'caution' => 'text-yellow-50 bg-yellow-400',
-  'warning' => 'text-red-50 bg-red-400',
-  default => 'text-indigo-50 bg-indigo-400',
+  'success' => 'bg-green-soft',
+  'caution' => 'bg-yellow-soft',
+  'warning' => 'bg-red-soft',
+  default => 'bg-blue-soft',
 })
 
-<div {{ $attributes->merge(['class' => "px-2 py-1 {$class}"]) }}>{!! $message ?? $slot !!}</div>
+<div {{ $attributes->merge(['class' => "rounded-lg px-4 py-3 {$class}"]) }}>{!! $message ?? $slot !!}</div>

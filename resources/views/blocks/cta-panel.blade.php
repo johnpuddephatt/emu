@@ -30,12 +30,19 @@
       
       ">
             <div
-                class="{{ $image_side === 'left' ? 'lg:order-first' : 'lg:order-last' }} {{ $image ? 'relative h-full min-h-64' : 'p-6 lg:p-10' }}">
+                class="{{ $image_side === 'left' ? 'lg:order-first' : 'lg:order-last' }} {{ $image ? ($light ? 'relative h-full min-h-64' : 'relative flex min-h-64 items-end justify-center') : 'p-6 lg:p-10' }}">
                 @if ($image)
                     @php
-                        $photo = wp_get_attachment_image($image, 'large', false, [
-                            'class' => $animate ? 'animate-reveal-up' : '',
-                            'sizes' => '(min-width: 1024px) 40vw, 90vw',
+                        // A dark panel's illustration is sized by its own aspect
+// ratio, so a portrait one stretches the panel far past
+// what the text needs and leaves it ringed with dead
+// space. Cap its height and stand it on the panel floor.
+$photo = wp_get_attachment_image($image, 'large', false, [
+    'class' => trim(
+        ($animate ? 'animate-reveal-up ' : '') .
+            ($light ? '' : 'max-h-72 w-auto object-contain lg:max-h-96'),
+    ),
+    'sizes' => '(min-width: 1024px) 40vw, 90vw',
                         ]);
                     @endphp
 

@@ -16,6 +16,14 @@
     text-sm  font-bold no-underline transition duration-300;
   background-color: var(--button-bg);
   color: var(--button-fg) !important;
+
+  /*
+   * Core's button block sets `word-break: break-word`, which splits a
+   * squeezed label mid-word ("Dona / te" in the footer at phone widths).
+   * Labels wrap between words or not at all.
+   */
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 .wp-element-button:hover {
@@ -39,6 +47,19 @@
  * dark sections; explicit variants are left alone.
  */
 .has-black-background-color .wp-block-button:not(.is-style-inverted):not(.is-style-primary) .wp-element-button {
+  --button-bg: var(--color-white);
+  --button-fg: var(--color-black);
+  --button-hover-bg: var(--color-gray-light);
+}
+
+/*
+ * Buttons a template renders itself sit outside a button block, so the
+ * rule above misses them and they stay black on black — the podcast
+ * block's "Listen on" links were invisible. `.wp-block-button__link` is
+ * core's own class, so excluding it leaves real button blocks to the
+ * rule above.
+ */
+.has-black-background-color .wp-element-button:not(.wp-block-button__link) {
   --button-bg: var(--color-white);
   --button-fg: var(--color-black);
   --button-hover-bg: var(--color-gray-light);
