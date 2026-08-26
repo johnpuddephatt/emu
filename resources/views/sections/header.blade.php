@@ -34,6 +34,10 @@
             </nav>
         @endif
 
-        @svg('logo-shape', 'pointer-events-none mx-auto mb-8 h-auto w-20 shrink-0 text-white')
+        <div class="flex shrink-0 flex-col items-center gap-8 pb-8">
+            <x-social-links icon-class="size-7" />
+
+            @svg('logo-shape', 'pointer-events-none h-auto w-20 text-white')
+        </div>
     </div>
 </header>

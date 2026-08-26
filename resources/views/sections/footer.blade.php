@@ -10,6 +10,8 @@
             <p class="mt-4 text-sm text-white/70">
                 {{ __('East Marsh United is a registered charity (No. 1213614), incorporated on 4 November 2023.', 'sage') }}
             </p>
+
+            <x-social-links class="mt-6" />
         </div>
 
         <div class="flex flex-wrap items-start gap-x-12 gap-y-8 lg:flex-nowrap lg:gap-16">
