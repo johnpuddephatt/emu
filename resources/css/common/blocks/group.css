@@ -27,3 +27,34 @@
     @apply rounded-3xl;
 }
 
+
+
+/*
+ * "Put simply…" — a plain-English aside beside the funder-facing copy it
+ * unpacks. Average adult reading age on the East Marsh is around 8, so
+ * these carry the same idea in the simplest words available.
+ *
+ * The question mark is masked rather than dropped in as a background
+ * image: a background image can't see `currentColor`, and these boxes
+ * need to work inside dark sections as well as on the tint.
+ */
+.wp-block-group.is-style-put-simply {
+  background-color: color-mix(in srgb, var(--color-yellow) 30%, var(--color-white));
+  @apply relative rounded-3xl;
+}
+
+/*
+ * Beats `.has-background:not(.alignfull)` above on specificity + order, so
+ * the left gutter for the icon survives when an editor picks a background.
+ */
+.wp-block-group.is-style-put-simply:not(.alignfull) {
+  @apply my-8 p-6 pl-20 lg:my-10 lg:p-8 lg:pl-28;
+}
+
+.wp-block-group.is-style-put-simply::before {
+  content: '';
+  -webkit-mask: url('../../../icons/question.svg') no-repeat center / contain;
+  mask: url('../../../icons/question.svg') no-repeat center / contain;
+  background-color: currentColor;
+  @apply pointer-events-none absolute top-6 left-6 aspect-[56/86] w-8 lg:top-8 lg:left-9 lg:w-10;
+}
