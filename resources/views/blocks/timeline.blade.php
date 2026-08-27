@@ -20,10 +20,10 @@
             <div aria-hidden="true" class="bg-yellow-dark absolute top-0 bottom-0 left-1/2 w-3 -translate-x-1/2"></div>
 
             @if ($intro)
-                <div
-                    class="rounded-blob has-black-background-color animate-enter-up relative mx-auto mb-10 flex aspect-square w-72 items-center justify-center p-10 text-center text-2xl font-bold text-balance lg:mb-16 lg:w-80 lg:text-3xl">
+                <h2
+                    class="rounded-blob has-black-background-color animate-enter-up relative mx-auto mb-10 flex aspect-square w-72 items-center justify-center p-10 text-center text-2xl font-bold text-balance lg:mb-16 lg:w-80 lg:text-3xl m-0">
                     {{ $intro }}
-                </div>
+                </h2>
             @endif
 
             @if ($items)
