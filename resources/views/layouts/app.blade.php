@@ -32,6 +32,8 @@
             </aside>
         @endif
 
+        <x-funders />
+
         @include('sections.footer')
     </div>
 

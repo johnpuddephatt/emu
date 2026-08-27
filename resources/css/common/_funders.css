@@ -1,0 +1,96 @@
+/*
+ * Funder logo strip.
+ *
+ * Logos arrive at wildly different proportions — square roundels next to
+ * wordmarks 2.5× as wide as they are tall. Sizing them all to one height
+ * lets the wordmarks tower over everything else; sizing them to one width
+ * does the same to the tall ones. Matching them by *area* is the fix, but
+ * done strictly it overcorrects: a dense wordmark reads bigger than a
+ * square logo of the same area, because the square one is mostly air.
+ *
+ * So each logo sits part-way between the two. `--logo-strength` is the
+ * dial: 0 gives every logo the same height, 1 gives every logo the same
+ * bounding-box area, and the default lands between. See 9elements'
+ * "Building the perfect logo strip" for the same trade-off worked through:
+ * https://9elements.com/blog/building-the-perfect-logo-strip/
+ *
+ * Two numbers come in per logo from components/funders.blade.php, off the
+ * attachment's intrinsic size: `--logo-ratio` (width ÷ height) and
+ * `--logo-area` (1 ÷ √ratio — the height multiplier for equal area, done
+ * in PHP so nothing here depends on CSS `sqrt()`). Anything WordPress
+ * can't measure — SVGs, usually — falls back to 1 on both and renders at
+ * the base height, held in by the max-width / object-fit pair below.
+ *
+ * The five knobs on `.funders` are the whole design surface; nothing under
+ * them should need touching to retune the strip.
+ */
+.funders {
+  /* Height a square logo renders at. Everything else is a multiple. */
+  --logo-height: 2.5rem;
+
+  /* 0 = every logo the same height, 1 = every logo the same area. */
+  --logo-strength: 0.6;
+
+  /* Floor and ceiling on that, as multiples of --logo-height. */
+  --logo-min-height: 0.5;
+  --logo-max-height: 1.3;
+
+  /* Widest any logo may render, as a width:height ratio. */
+  --logo-max-ratio: 3.25;
+}
+
+@media (min-width: 768px) {
+  .funders {
+    --logo-height: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .funders {
+    --logo-height: 3.5rem;
+  }
+}
+
+.funders__logo {
+  --ratio: var(--logo-ratio, 1);
+
+  /* Height multiplier, interpolated from 1 (equal heights) toward the
+   * equal-area figure. Below 1 for landscape logos, above 1 for portrait. */
+  --target: calc(1 + var(--logo-strength) * (var(--logo-area, 1) - 1));
+
+  /*
+   * The floor and ceiling bound ordinary logos; the ratio cap is applied
+   * last and outside them, so a runaway wordmark — a long name set on one
+   * line — is pulled below the floor rather than allowed to sprawl.
+   */
+  height: min(
+    clamp(
+      calc(var(--logo-height) * var(--logo-min-height)),
+      calc(var(--logo-height) * var(--target)),
+      calc(var(--logo-height) * var(--logo-max-height))
+    ),
+    calc(var(--logo-height) * var(--logo-max-ratio) / var(--ratio))
+  );
+  width: auto;
+
+  /*
+   * Belt and braces for logos whose ratio we don't know, and for phones
+   * where a single logo would otherwise be wider than the row. `contain`
+   * means a logo squeezed on both axes letterboxes rather than distorts.
+   */
+  max-width: min(100%, calc(var(--logo-height) * var(--logo-max-ratio)));
+  object-fit: contain;
+  object-position: center;
+  transition: opacity 0.3s;
+}
+
+/*
+ * Linked logos dim slightly on hover; the logos themselves stay in full
+ * colour. To mute them instead, add `filter: grayscale(1)` and a resting
+ * `opacity` to .funders__logo, and undo both in the :hover rule.
+ */
+@media (hover: hover) {
+  .funders a:hover .funders__logo {
+    opacity: 0.7;
+  }
+}
