@@ -9,12 +9,12 @@
     </div>
 
     <div class="relative flex w-full flex-col overflow-hidden rounded-xl {{ $color['tint'] }}">
-        {{-- Contained, not cropped: these are usually illustrations, and
-             cover-cropping them lops off heads. --}}
+        {{-- Full bleed across the top of the card, cropped to 2:1. The
+             parent's overflow-hidden is what rounds off the top corners. --}}
         @if ($card['image'])
             {!! wp_get_attachment_image($card['image'], 'large', false, [
-                'class' => 'mx-auto h-44 w-auto max-w-full object-contain px-6 pt-6',
-                'sizes' => '(min-width: 1024px) 33vw, 90vw',
+                'class' => 'aspect-[2] w-full object-cover',
+                'sizes' => '(min-width: 640px) 45vw, 90vw',
             ]) !!}
         @endif
 
