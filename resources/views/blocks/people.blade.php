@@ -77,7 +77,7 @@ $tint = match ($loop->index % 4) {
                                             @svg('close', 'size-5')
                                         </button>
 
-                                        <h3 class="type-lg pr-10">{{ $person['name'] }}</h3>
+                                        <h3 class="type-lg mb-0 pb-0 pr-10">{{ $person['name'] }}</h3>
 
                                         @if ($person['role'])
                                             <p class="mt-1 type-sm font-bold">{{ $person['role'] }}</p>
