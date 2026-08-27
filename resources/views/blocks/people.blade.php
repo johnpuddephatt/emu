@@ -26,7 +26,7 @@ $tint = match ($loop->index % 4) {
     1 => 'bg-blue-soft',
     2 => 'bg-green-soft',
     3 => 'bg-yellow-soft',
-};
+                            };
                         @endphp
 
                         <li class="flex flex-col">
@@ -80,7 +80,7 @@ $tint = match ($loop->index % 4) {
                                         <h3 class="type-lg pr-10">{{ $person['name'] }}</h3>
 
                                         @if ($person['role'])
-                                            <p class="mt-1 text-md font-bold">{{ $person['role'] }}</p>
+                                            <p class="mt-1 type-sm font-bold">{{ $person['role'] }}</p>
                                         @endif
 
                                         {{-- `.rich-text`, not `.prose`: the grid above is `.not-prose`,
