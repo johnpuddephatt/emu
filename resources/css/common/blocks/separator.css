@@ -1,0 +1,12 @@
+.wp-block-separator {
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  margin-block: 5rem;
+  height: 0.75rem;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="283.4" height="13.8"><path d="M4.4 13.6c23.9-3.4 47.9-1 71.9-1.9 23.7-.9 47.5-.5 71.2-1.6 22.4-1 44.7 2.1 67.1.2 20.1-1.7 40-3.9 60-4.5 2.2-.1 13.1-5.3 7-5.6-2.1-.1-4.2-.2-6.3-.2-2.6-.1-14.3 5.4-8.3 5.6 2.1.1 4.2.2 6.3.2 2.3-1.9 4.7-3.7 7-5.6-20.1.6-40 2.8-60 4.5-23.7 2-47.5-1.1-71.2 0-23.6 1.1-47.3.8-71 1.6C54.3 7 30.7 5 7 8.4c-5 .7-11.4 6.5-2.6 5.2z"/></svg>');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
