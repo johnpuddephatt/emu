@@ -40,7 +40,7 @@
  */
 .wp-block-group.is-style-put-simply {
   background-color: color-mix(in srgb, var(--color-yellow) 30%, var(--color-white));
-  @apply relative rounded-3xl;
+  @apply relative rounded-3xl after:absolute after:inset-0 after:border-yellow after:border-2 after:rounded-xl after:rotate-1 odd:after:-rotate-1 hover:after:rotate-0 after:transition;
 }
 
 /*
@@ -48,13 +48,12 @@
  * the left gutter for the icon survives when an editor picks a background.
  */
 .wp-block-group.is-style-put-simply:not(.alignfull) {
-  @apply my-8 p-6 pl-20 lg:my-10 lg:p-8 lg:pl-28;
+  @apply my-8 p-6 pl-24 lg:my-10 lg:p-8 lg:pl-44;
 }
 
 .wp-block-group.is-style-put-simply::before {
   content: '';
-  -webkit-mask: url('../../../icons/question.svg') no-repeat center / contain;
-  mask: url('../../../icons/question.svg') no-repeat center / contain;
-  background-color: currentColor;
-  @apply pointer-events-none absolute top-6 left-6 aspect-[56/86] w-8 lg:top-8 lg:left-9 lg:w-10;
+  background: url('../../../icons/question.svg') no-repeat center / contain;
+  
+  @apply pointer-events-none absolute top-6 left-6 aspect-[1] w-12 lg:top-8 lg:left-9 lg:w-28;
 }

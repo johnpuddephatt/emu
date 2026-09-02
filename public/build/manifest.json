@@ -4,7 +4,7 @@
     "src": "editor.deps.json"
   },
   "resources/css/app.css": {
-    "file": "assets/app-5IuffKly.css",
+    "file": "assets/app-BbYAheT2.css",
     "name": "app",
     "names": [
       "app.css"
@@ -15,11 +15,11 @@
       "assets/RockfordSansExtrabold-0hkvppmZ.woff2",
       "assets/RockfordSansLight-T_kJCuub.woff2",
       "assets/lines-Cmb2uRVS.svg",
-      "assets/question-DPFw5X0-.svg"
+      "assets/question-D6bQxypu.svg"
     ]
   },
   "resources/css/editor.css": {
-    "file": "assets/editor-ODimj6Ue.css",
+    "file": "assets/editor-CO9h-CLp.css",
     "name": "editor",
     "names": [
       "editor.css"
@@ -30,7 +30,7 @@
       "assets/RockfordSansExtrabold-0hkvppmZ.woff2",
       "assets/RockfordSansLight-T_kJCuub.woff2",
       "assets/lines-Cmb2uRVS.svg",
-      "assets/question-DPFw5X0-.svg"
+      "assets/question-D6bQxypu.svg"
     ]
   },
   "resources/fonts/RockfordSansExtrabold.woff2": {
@@ -46,7 +46,7 @@
     "src": "resources/icons/lines.svg"
   },
   "resources/icons/question.svg": {
-    "file": "assets/question-DPFw5X0-.svg",
+    "file": "assets/question-D6bQxypu.svg",
     "src": "resources/icons/question.svg"
   },
   "resources/images/illustrations/Billy Doing.png": {
