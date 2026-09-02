@@ -24,7 +24,7 @@
  * them, exactly as the old site staggered it (logo 1.5s, lines 2s).
  */
 .loading-screen__logo {
-  @apply absolute top-1/2 left-1/2 w-40 -translate-x-1/2 -translate-y-1/2 lg:w-56;
+  @apply absolute top-1/2 left-1/2 w-40 -translate-x-1/2 -translate-y-1/2 lg:w-72;
 
   animation: loading-screen-out 500ms 1.5s forwards;
 }

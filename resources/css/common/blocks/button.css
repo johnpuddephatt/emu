@@ -1,5 +1,5 @@
 .wp-block-buttons {
-  @apply flex gap-3 flex-wrap;
+  @apply flex gap-3 flex-wrap my-12;
 }
 
 /*
