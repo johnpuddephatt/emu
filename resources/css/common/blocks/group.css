@@ -19,7 +19,7 @@
   content: '';
   z-index: -1;
   background: url('../../../icons/lines.svg') no-repeat center / cover;
-  @apply pointer-events-none absolute right-0 bottom-0 w-[55vw] aspect-[1.1/0.8];
+  @apply pointer-events-none absolute left-1/2 bottom-0 w-[50vw] aspect-[1.1/0.8];
 }
 
 
