@@ -1,6 +1,7 @@
 .wp-block-buttons {
-  @apply flex gap-3 flex-wrap my-12;
+  @apply flex gap-3 flex-wrap my-12 last:mb-0;
 }
+
 
 /*
  * Solid pill buttons, driven by variables so the block style
