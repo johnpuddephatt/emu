@@ -12,7 +12,7 @@
   <!-- wp:columns {"verticalAlignment":"center","align":"wide"} -->
   <div class="wp-block-columns alignwide are-vertically-aligned-center mb-0!">
     <!-- wp:column {"verticalAlignment":"center","width":"40%"} -->
-    <div class="wp-block-column is-vertically-aligned-center prose pb-24" style="flex-basis:40%">
+    <div class="wp-block-column is-vertically-aligned-center prose !pb-24" style="flex-basis:40%">
       <!-- wp:heading -->
       <h2 class="wp-block-heading">Who <mark style="color:#e9404f" class="has-inline-color has-red-color">we</mark> are</h2>
       <!-- /wp:heading -->
