@@ -40,7 +40,7 @@
 $photo = wp_get_attachment_image($image, 'large', false, [
     'class' => trim(
         ($animate ? 'animate-reveal-up ' : '') .
-            ($light ? '' : 'max-h-72 w-auto object-contain lg:max-h-96'),
+            ($light ? '' : 'max-h-72 w-auto object-contain lg:max-h-128'),
     ),
     'sizes' => '(min-width: 1024px) 40vw, 90vw',
                         ]);
