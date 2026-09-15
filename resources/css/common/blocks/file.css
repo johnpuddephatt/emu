@@ -1,0 +1,21 @@
+/*
+ * Core Details block, styled as the FAQ rows from the old
+ * eastmarshunited site: a green rule under each row, the native
+ * disclosure triangle as the marker, and the answer indented to
+ * line up with the question.
+ */
+.wp-block-file {
+  @apply rounded-xl bg-yellow-soft before:inset-0 before:pointer-events-none before:absolute relative before:border-yellow before:border-2 before:rounded-xl before:rotate-1 odd:before:-rotate-1 hover:before:rotate-0 before:transition;
+}
+
+
+
+/*
+ * Consecutive details blocks read as one list, so the block gap
+ * between them is dropped. Unlayered on purpose — `.prose` margins
+ * come from the typography plugin's utilities layer.
+ */
+.wp-block-file + .wp-block-file {
+  @apply !mt-6;
+}
+
