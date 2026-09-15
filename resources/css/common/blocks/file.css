@@ -5,7 +5,11 @@
  * line up with the question.
  */
 .wp-block-file {
-  @apply rounded-xl text-base no-underline flex justify-between items-center p-4 bg-yellow-soft before:inset-0 before:pointer-events-none before:absolute relative before:border-yellow before:border-2 before:rounded-xl before:rotate-1 odd:before:-rotate-1 hover:before:rotate-0 before:transition;
+  @apply rounded-xl  flex justify-between items-center p-4 bg-yellow-soft before:inset-0 before:pointer-events-none before:absolute relative before:border-yellow before:border-2 before:rounded-xl before:rotate-1 odd:before:-rotate-1 hover:before:rotate-0 before:transition;
+}
+
+.wp-block-file a {
+  @apply text-base no-underline;
 }
 
 
