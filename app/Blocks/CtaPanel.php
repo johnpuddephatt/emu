@@ -41,7 +41,7 @@ class CtaPanel extends Block
      *
      * @var string
      */
-    public $description = 'Rounded call-to-action panel with an image or illustration beside the message.';
+    public $description = 'Rounded call-to-action panel with an image or illustration beside the message, or a compact signpost strip.';
 
     /**
      * The block category.
@@ -62,7 +62,7 @@ class CtaPanel extends Block
      *
      * @var array
      */
-    public $keywords = ['cta', 'call to action', 'panel', 'member', 'donate', 'banner'];
+    public $keywords = ['cta', 'call to action', 'panel', 'member', 'donate', 'banner', 'announcement', 'strip'];
 
     /**
      * The default block mode.
@@ -81,11 +81,13 @@ class CtaPanel extends Block
     /**
      * The block styles. Dark: black panel, illustration floating beside
      * the message. Light: white panel with a hand-drawn border and a
-     * photo filling one side.
+     * photo filling one side. Compact: a thin black strip — heading,
+     * optional description and link, no image — for announcements on
+     * pages where a full panel would interrupt the flow.
      *
      * @var array
      */
-    public $styles = ['dark', 'light', 'light_alt'];
+    public $styles = ['dark', 'light', 'light_alt', 'compact'];
 
     /**
      * The supported block features.
@@ -138,7 +140,7 @@ class CtaPanel extends Block
         $fields
             ->addImage('image', [
                 'label' => 'Image',
-                'instructions' => 'An illustration (dark style) or photo (light style).',
+                'instructions' => 'An illustration (dark style) or photo (light style). Not shown by the compact style.',
                 'return_format' => 'id',
                 'preview_size' => 'medium',
             ])

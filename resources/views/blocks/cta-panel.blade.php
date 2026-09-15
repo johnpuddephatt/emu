@@ -6,6 +6,28 @@
     $animate = $image && $animate_image && !$block->preview;
 @endphp
 
+@if ($block->style === 'compact')
+    {{-- Thin signpost strip: heading + optional description on the left,
+         buttons on the right, no image. Layout lives in
+         css/common/blocks/cta-panel.css (.cta-compact) because the prose
+         heading sizes are unlayered and would beat any utility here. --}}
+    @unless ($block->preview)
+        <div {{ $attributes }}>
+    @endunless
+
+    <section
+        class="wp-block cta-compact relative my-8 {{ $block->block->align === 'full' ? 'alignfull px-4' : 'alignwide' }}">
+        <div class="has-black-background-color prose prose-invert max-w-none rounded-xl px-6 py-5 lg:px-8">
+            <InnerBlocks template="{{ $block->template }}" />
+        </div>
+
+        @svg('loop', 'pointer-events-none absolute top-1/2 right-full w-14 -translate-x-4 -translate-y-1/2 text-yellow max-lg:hidden')
+    </section>
+
+    @unless ($block->preview)
+        </div>
+    @endunless
+@else
 @unless ($block->preview)
     <div {{ $attributes }}>
     @endunless
@@ -73,4 +95,5 @@ $photo = wp_get_attachment_image($image, 'large', false, [
 
     @unless ($block->preview)
     </div>
-@endunless
+    @endunless
+@endif
