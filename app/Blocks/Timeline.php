@@ -92,7 +92,7 @@ class Timeline extends Block
         'intro' => "Take a look at what we've been up to",
         'items' => [
             ['acf_fc_layout' => 'image', 'image' => null],
-            ['acf_fc_layout' => 'card', 'image' => null, 'title' => 'Wild Pixels', 'text' => 'Working with artists and school pupils, Wild Pixels imagined what a greener East Marsh might look and sound like.'],
+            ['acf_fc_layout' => 'card', 'image' => null, 'title' => 'Wild Pixels', 'text' => '<p>Working with artists and school pupils, Wild Pixels imagined what a greener East Marsh might look and sound like.</p>'],
             ['acf_fc_layout' => 'stat', 'number' => '48%', 'text' => 'of our community have got involved in a creative project over the past two years.'],
             ['acf_fc_layout' => 'text', 'text' => '<strong>Local creatives</strong> work with us as equals, shaping projects from the ground up.'],
         ],
@@ -160,7 +160,11 @@ class Timeline extends Block
                         'preview_size' => 'medium',
                     ])
                     ->addText('title')
-                    ->addTextarea('text', ['rows' => 3])
+                    ->addWysiwyg('text', [
+                        'tabs' => 'visual',
+                        'toolbar' => 'minimal',
+                        'media_upload' => false,
+                    ])
                 ->addLayout('stat', ['label' => 'Stat'])
                     ->addText('number', [
                         'label' => 'Figure',

@@ -17,7 +17,7 @@
             @endif
 
             @if ($item['text'])
-                <p class="mt-4 mb-0 text-sm leading-relaxed">{{ $item['text'] }}</p>
+                <div class="rich-text mt-4 text-sm leading-relaxed">{!! $item['text'] !!}</div>
             @endif
         </div>
     </div>
