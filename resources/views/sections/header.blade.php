@@ -27,17 +27,15 @@
                 {!! wp_nav_menu([
                     'theme_location' => 'primary_navigation',
                     'menu_class' =>
-                        'menu-stagger flex list-none flex-col items-center gap-6 p-0 text-center text-3xl font-bold [&_a]:no-underline [&_a:hover]:underline',
+                        'menu-stagger flex list-none flex-col items-center gap-8 p-0 text-center text-2xl font-bold [&_a]:no-underline [&_a:hover]:underline',
                     'container' => false,
                     'echo' => false,
                 ]) !!}
             </nav>
         @endif
 
-        <div class="flex shrink-0 flex-col items-center gap-8 pb-8">
+        <div class="flex shrink-0 flex-col items-center gap-8 pb-4">
             <x-social-links icon-class="size-7" />
-
-            @svg('logo-shape', 'pointer-events-none h-auto w-20 text-white')
         </div>
     </div>
 </header>
