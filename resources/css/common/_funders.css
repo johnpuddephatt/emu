@@ -51,6 +51,21 @@
   }
 }
 
+/*
+ * Memberships and accreditations are credibility marks rather than
+ * headline support, so they sit in a smaller row. Scaling the base height
+ * here keeps every other knob in proportion.
+ */
+.funders__group--member {
+  --logo-height: 2.75rem;
+}
+
+@media (min-width: 1024px) {
+  .funders__group--member {
+    --logo-height: 3.25rem;
+  }
+}
+
 .funders__logo {
   --ratio: var(--logo-ratio, 1);
 

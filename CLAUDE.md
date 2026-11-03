@@ -29,6 +29,7 @@ Bootstrap: `functions.php` boots the Acorn application with `App\Providers\Theme
 - **Blocks** (`app/Blocks/*.php`): ACF blocks via `log1x/acf-composer`. Each class defines block metadata + an ACF field group (`fields()` using `Builder`) + view data (`with()`), and renders `resources/views/blocks/<slug>.blade.php`.
 - **Fields** (`app/Fields/*.php`): standalone ACF field groups (e.g. `EventDetails` attaches start/end/location to the `event` post type).
 - **Post types & taxonomies**: registered declaratively in `config/poet.php` via `log1x/poet` — post types `event`, `workstream` and `person`, taxonomy `role_type` (on `person`). `person` is deliberately non-public: bios are surfaced by the People block's modal, and there's no `single-person` template.
+- **Funder logos**: one repeater on the Appearance → Funders options page (`app/Options/Funders.php`). Each row is a core funder or a membership/accreditation (both shown above the footer on every page), or a workstream supporter (shown only on the workstreams it's tagged with). Rows can have an optional "show until" date. `App\View\Composers\Funders` groups the rows for `components/funders.blade.php`, and the sizing maths is in `common/_funders.css`.
 - **Views** (`resources/views/`): Blade templates — `layouts/`, `partials/`, `sections/` (header/footer), `blocks/`. View composers in `app/View/Composers/`.
 - **Icons**: `blade-ui-kit/blade-icons`, set in `resources/icons/`, used as `<x-icon-name />` (prefix `icon`, see `config/blade-icons.php`).
 - **Patterns**: block patterns in `patterns/` (PHP files).
