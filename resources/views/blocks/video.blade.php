@@ -9,28 +9,29 @@
     No arrow functions in the Alpine attributes below — `>` ends the tag as far
     as wptexturize is concerned, which silently breaks the component.
 --}}
-    <div class="not-prose group bg-gray-light relative isolate  w-full overflow-hidden" x-data="{
-        play() {
-                @if ($embed) this.$refs.frame.src = '{{ $embed }}';
+    <div class="not-prose group bg-gray-light lg:aspect-video relative isolate  w-full overflow-hidden"
+        x-data="{
+            play() {
+                    @if ($embed) this.$refs.frame.src = '{{ $embed }}';
             @else
                 this.$refs.player.innerHTML = this.$refs.markup.innerHTML; @endif
-    
-                this.$refs.dialog.showModal();
-            },
-            stop() {
-                @if ($embed) this.$refs.frame.src = '';
+        
+                    this.$refs.dialog.showModal();
+                },
+                stop() {
+                    @if ($embed) this.$refs.frame.src = '';
             @else
                 this.$refs.player.innerHTML = ''; @endif
-            },
-    }">
+                },
+        }">
         @if ($thumbnail)
             {!! wp_get_attachment_image($thumbnail, 'large', false, [
-                'class' => 'lg:absolute aspect-video inset-0 size-full object-cover',
+                'class' => 'lg:absolute  inset-0 size-full object-cover',
                 'sizes' => '(min-width: 1024px) 50vw, 100vw',
             ]) !!}
         @elseif ($thumbnail_url)
             <img src="{{ esc_url($thumbnail_url) }}" alt="" loading="lazy"
-                class="lg:absolute inset-0 aspect-video size-full object-cover" />
+                class="lg:absolute inset-0  size-full object-cover" />
         @endif
 
         <span aria-hidden="true" class="absolute aspect-video top-0 left-0 right-0 z-10 flex items-center justify-center">
