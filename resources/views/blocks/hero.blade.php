@@ -21,29 +21,32 @@
 
                 @if ($images)
                     {{--
-                        Three columns of two, staggered. Every photo's long edge is
-                        capped at the same size (30% of the box, via `cqw`), so
-                        portrait and landscape shots carry similar weight and nothing
-                        is wider than its column, so the columns never collide.
+                        A loose collage on a square box, the same at every width.
+                        Each slot is a square of the given size (long edge, in
+                        `cqw` of the box), and the photo is centred in it, so a
+                        portrait or landscape shot never spills out of its slot. Two
+                        large, three medium and one small, laid out so no two slots
+                        overlap.
 
-                        Each column has a single `animate-scroll-*` speed: photos
-                        in the same column move together, and the parallax comes
-                        from the columns moving against each other. Slots are
-                        ordered so any 4 of the 6 still spread across the box.
+                        Parallax: where two slots share any horizontal space, the
+                        upper one never moves slower than the lower one, so they
+                        drift apart as you scroll. Slots are ordered so that any 4
+                        of the 6 still spread across the box (big top-left, big
+                        bottom-right, then the gaps).
                     --}}
-                    <div class="relative h-96 [container-type:inline-size] sm:h-112 lg:h-144">
+                    <div class="relative aspect-square w-full max-w-xl [container-type:inline-size] lg:max-w-none">
                         @foreach ($images as $image)
                             {!! wp_get_attachment_image($image, 'large', false, [
-                                'sizes' => '(min-width: 1024px) 15vw, 30vw',
+                                'sizes' => '(min-width: 1024px) 20vw, 40vw',
                                 'class' =>
-                                    '!my-0 absolute z-10 h-auto w-auto max-w-[30cqw] max-h-[30cqw] -translate-x-1/2 rounded-lg ' .
+                                    '!my-0 absolute z-10 h-auto w-auto -translate-1/2 rounded-lg ' .
                                     match ($loop->index) {
-                                        0 => 'left-[14%] top-0 animate-scroll-1',
-                                        1 => 'left-[84%] top-[56%] animate-scroll-3',
-                                        2 => 'left-[51%] top-[16%] animate-scroll-2',
-                                        3 => 'left-[16.5%] top-[48%] animate-scroll-1',
-                                        4 => 'left-[86%] top-[6%] animate-scroll-3',
-                                        5 => 'left-[49%] top-[64%] animate-scroll-2',
+                                        0 => 'left-[19%] top-[23%] max-w-[38cqw] max-h-[38cqw] animate-scroll-3',
+                                        1 => 'left-[82%] top-[78%] max-w-[36cqw] max-h-[36cqw] animate-scroll-2',
+                                        2 => 'left-[56%] top-[12%] max-w-[24cqw] max-h-[24cqw] animate-scroll-2',
+                                        3 => 'left-[28%] top-[79%] max-w-[26cqw] max-h-[26cqw] animate-scroll-2',
+                                        4 => 'left-[85%] top-[29%] max-w-[30cqw] max-h-[30cqw] animate-scroll-3',
+                                        5 => 'left-[56%] top-[48%] max-w-[28cqw] max-h-[28cqw] animate-scroll-3',
                                         default => 'hidden',
                                     },
                             ]) !!}
