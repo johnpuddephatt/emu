@@ -52,7 +52,7 @@
                 @endif
             </div>
 
-            @svg('streams-lines', 'pointer-events-none absolute top-0 right-0 w-1/4')
+            @svg('streams-lines', 'pointer-events-none absolute top-0 right-0 w-1/2 lg:w-1/4')
         </section>
     @else
         {{--
@@ -85,13 +85,19 @@
                             '!my-0 absolute z-10 h-auto w-auto max-w-(--hero-photo) max-h-(--hero-photo) rounded-lg ' .
                             match ($loop->index) {
                                 // left gutter, top to bottom
-                                0 => 'left-4 top-6 animate-scroll-3 lg:top-[9%] lg:left-[calc(var(--hero-gutter)*0.42)] lg:-translate-x-1/2',
-                                2 => 'left-4 top-[calc(20vh+3.5rem)] animate-scroll-1 lg:top-[38%] lg:left-[calc(var(--hero-gutter)*0.58)] lg:-translate-x-1/2',
-                                1 => 'bottom-[6%] left-4 animate-scroll-1 lg:bottom-[5%] lg:left-[calc(var(--hero-gutter)*0.5)] lg:-translate-x-1/2',
+                                0
+                                    => 'left-4 top-6 animate-scroll-3 lg:top-[9%] lg:left-[calc(var(--hero-gutter)*0.42)] lg:-translate-x-1/2',
+                                2
+                                    => 'left-4 top-[calc(20vh+3.5rem)] animate-scroll-1 lg:top-[38%] lg:left-[calc(var(--hero-gutter)*0.58)] lg:-translate-x-1/2',
+                                1
+                                    => 'bottom-[6%] left-4 animate-scroll-1 lg:bottom-[5%] lg:left-[calc(var(--hero-gutter)*0.5)] lg:-translate-x-1/2',
                                 // right gutter, top to bottom
-                                4 => 'right-4 top-24 animate-scroll-3 lg:top-[14%] lg:right-[calc(var(--hero-gutter)*0.5)] lg:translate-x-1/2',
-                                5 => 'bottom-[4%] right-1/2 translate-x-1/2 animate-scroll-3 lg:bottom-auto lg:top-[44%] lg:right-[calc(var(--hero-gutter)*0.4)]',
-                                3 => 'bottom-[8%] right-4 animate-scroll-1 lg:bottom-[2%] lg:right-[calc(var(--hero-gutter)*0.58)] lg:translate-x-1/2',
+                                4
+                                    => 'right-4 top-24 animate-scroll-3 lg:top-[14%] lg:right-[calc(var(--hero-gutter)*0.5)] lg:translate-x-1/2',
+                                5
+                                    => 'bottom-[4%] right-1/2 translate-x-1/2 animate-scroll-3 lg:bottom-auto lg:top-[44%] lg:right-[calc(var(--hero-gutter)*0.4)]',
+                                3
+                                    => 'bottom-[8%] right-4 animate-scroll-1 lg:bottom-[2%] lg:right-[calc(var(--hero-gutter)*0.58)] lg:translate-x-1/2',
                                 default => 'hidden',
                             },
                     ]) !!}
