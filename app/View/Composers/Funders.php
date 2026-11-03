@@ -34,7 +34,7 @@ class Funders extends Composer
             [
                 'key' => 'workstream',
                 'heading' => $workstream
-                    ? sprintf(__('Supporting %s', 'sage'), html_entity_decode(get_the_title($workstream)))
+                    ? sprintf(__('Our %s supporters and partners', 'sage'), html_entity_decode(get_the_title($workstream)))
                     : null,
                 'logos' => $workstream
                     ? $logos->filter(fn($logo) => $logo['type'] === 'workstream'

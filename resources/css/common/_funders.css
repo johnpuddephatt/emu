@@ -57,12 +57,18 @@
  * here keeps every other knob in proportion.
  */
 .funders__group--member {
-  --logo-height: 2.75rem;
+  --logo-height: 3.25rem;
+}
+
+@media (min-width: 768px) {
+  .funders__group--member {
+    --logo-height: 3.75rem;
+  }
 }
 
 @media (min-width: 1024px) {
   .funders__group--member {
-    --logo-height: 3.25rem;
+    --logo-height: 4.25rem;
   }
 }
 
