@@ -11,7 +11,8 @@
     @endunless
 
     @if ($block->style === 'split')
-        <section class="wp-block alignfull is-bleed has-black-background-color animate-scroll-section relative overflow-x-clip">
+        <section
+            class="wp-block alignfull is-bleed has-black-background-color animate-scroll-section relative overflow-x-clip">
             <div
                 class="max-w-wide min-h-200  relative mx-auto grid items-center gap-12  px-4 md:px-6 lg:px-8 xl:px-12 pt-36 pb-24 lg:grid-cols-2 lg:gap-20 lg:py-32">
                 <div class="prose prose-invert [&_.has-text-align-center]:text-left [&_.wp-block-buttons]:justify-start">
@@ -20,33 +21,29 @@
 
                 @if ($images)
                     {{--
-                        Six slots scattered over the box, ordered so that any prefix
-                        stays balanced — the gallery allows 4-6 photos, so slots 0-3
-                        already cover top, middle and bottom, and 4-5 fill the gaps
-                        rather than starting a new band. `max-h` matters as much as
-                        `max-w`: portrait shots are otherwise tall enough to swallow two
-                        bands on their own. Indexes 2 and 4 drop out below `lg`.
+                        Three columns of two, staggered. Every photo's long edge is
+                        capped at the same size (30% of the box, via `cqw`), so
+                        portrait and landscape shots carry similar weight and nothing
+                        is wider than its column, so the columns never collide.
 
-                        Positions are only half the story — the parallax swings each
-                        photo through up to 40vh of travel, and neighbouring indexes
-                        deliberately draw different `animate-scroll-*` keyframes so they
-                        separate rather than drift as a block.
+                        Each column has a single `animate-scroll-*` speed: photos
+                        in the same column move together, and the parallax comes
+                        from the columns moving against each other. Slots are
+                        ordered so any 4 of the 6 still spread across the box.
                     --}}
-                    <div class="relative h-104 sm:h-120 lg:h-160">
+                    <div class="relative h-96 [container-type:inline-size] sm:h-112 lg:h-144">
                         @foreach ($images as $image)
                             {!! wp_get_attachment_image($image, 'large', false, [
-                                'sizes' => '(min-width: 1200px) 25vw, (min-width: 800px) 35vw, 50vw',
+                                'sizes' => '(min-width: 1024px) 15vw, 30vw',
                                 'class' =>
-                                    '!my-0 absolute h-auto rounded-lg w-auto max-w-36 max-h-48 lg:max-w-52 lg:max-h-64 animate-scroll-' .
-                                    (($loop->index % 3) + 1) .
-                                    ' ' .
+                                    '!my-0 absolute z-10 h-auto w-auto max-w-[30cqw] max-h-[30cqw] -translate-x-1/2 rounded-lg ' .
                                     match ($loop->index) {
-                                        0 => 'top-0 -left-1/12 z-10 lg:max-w-60',
-                                        1 => 'top-0 lg:top-7/12 right-0 z-10 lg:max-w-52',
-                                        2 => 'hidden lg:block lg:top-[4%] lg:right-[2%] lg:max-w-44',
-                                        3 => 'bottom-0 left-1/4 lg:top-[38%] lg:left-[10%] lg:max-w-48',
-                                        4 => 'hidden lg:block lg:bottom-[6%] lg:left-0 lg:max-w-40',
-                                        5 => 'bottom-0 left-7/12 lg:bottom-auto lg:top-[34%] lg:left-[42%] lg:max-w-40',
+                                        0 => 'left-[14%] top-0 animate-scroll-1',
+                                        1 => 'left-[84%] top-[56%] animate-scroll-3',
+                                        2 => 'left-[51%] top-[16%] animate-scroll-2',
+                                        3 => 'left-[16.5%] top-[48%] animate-scroll-1',
+                                        4 => 'left-[86%] top-[6%] animate-scroll-3',
+                                        5 => 'left-[49%] top-[64%] animate-scroll-2',
                                         default => 'hidden',
                                     },
                             ]) !!}
@@ -58,35 +55,48 @@
             @svg('streams-lines', 'pointer-events-none absolute top-0 right-0 w-1/4')
         </section>
     @else
-        <section class="wp-block alignfull is-bleed has-black-background-color animate-scroll-section relative overflow-x-clip">
-            <div class="max-w-content relative mx-auto px-4 py-[20vh] text-center lg:py-48">
+        {{--
+            Photos are positioned against the section, not the text column.
+            Below lg they sit above and below the text (and either side of the
+            logo); from lg they move into the two side gutters, centred in
+            the space either side of the 48rem content column and sized to
+            fit it (`--hero-photo` is each photo's long edge).
+
+            Parallax is already part-applied at scroll 0, so the top photos use
+            the gentle `animate-scroll-3` (it barely shifts them on load, which
+            keeps them clear of the menu button), and nothing lower in a column
+            rises faster than the photo above it.
+        --}}
+        <section
+            class="wp-block alignfull is-bleed has-black-background-color animate-scroll-section relative overflow-x-clip [--hero-gutter:calc(50%-24rem)] [--hero-photo:6rem] md:[--hero-photo:7rem] lg:[--hero-photo:clamp(6rem,calc((50vw-24rem)*0.75),14rem)]">
+            <div class="max-w-content mx-auto px-4 pb-[30vh] pt-[20vh] text-center lg:py-48">
                 @svg('logo', 'mx-auto h-auto mb-8 w-36 fill-white')
 
                 <div class="[&_.wp-block-buttons]:justify-center prose prose-invert">
                     <InnerBlocks template="{{ $block->template }}" />
                 </div>
-
-                @if (shuffle($images))
-                    @foreach ($images as $image)
-                        {!! wp_get_attachment_image($image, 'large', false, [
-                            'sizes' => '(min-width: 1200px) 30vw, (min-width: 800px) 40vw, 50vw',
-                            'class' =>
-                                '!my-0 absolute z-10 h-auto max-h-48 rounded-lg w-auto max-w-48 lg:max-w-72 lg:max-h-72 animate-scroll-' .
-                                (($loop->index % 4) + 1) .
-                                ' ' .
-                                match ($loop->index) {
-                                    0 => 'top-16 left-4 lg:top-1/5 lg:left-auto lg:right-full lg:translate-x-24 ',
-                                    3 => 'hidden lg:block lg:top-10/12   lg:right-0  ',
-                                    1 => 'hidden lg:block lg:top-11/12 lg:right-2/3  ',
-                                    2 => 'bottom-0 left-8 lg:bottom-auto lg:top-1/2 lg:left-auto lg:right-full lg:-translate-x-24 ',
-                                    5 => 'hidden lg:block lg:top-2/3 lg:left-full lg:translate-x-32 ',
-                                    4 => 'top-4 right-4 lg:top-1/5 lg:right-auto lg:left-full lg:translate-x-10 ',
-                                    default => 'hidden',
-                                },
-                        ]) !!}
-                    @endforeach
-                @endif
             </div>
+
+            @if (shuffle($images))
+                @foreach ($images as $image)
+                    {!! wp_get_attachment_image($image, 'large', false, [
+                        'sizes' => '(min-width: 1024px) 14rem, 7rem',
+                        'class' =>
+                            '!my-0 absolute z-10 h-auto w-auto max-w-(--hero-photo) max-h-(--hero-photo) rounded-lg ' .
+                            match ($loop->index) {
+                                // left gutter, top to bottom
+                                0 => 'left-4 top-6 animate-scroll-3 lg:top-[9%] lg:left-[calc(var(--hero-gutter)*0.42)] lg:-translate-x-1/2',
+                                2 => 'left-4 top-[calc(20vh+3.5rem)] animate-scroll-1 lg:top-[38%] lg:left-[calc(var(--hero-gutter)*0.58)] lg:-translate-x-1/2',
+                                1 => 'bottom-[6%] left-4 animate-scroll-1 lg:bottom-[5%] lg:left-[calc(var(--hero-gutter)*0.5)] lg:-translate-x-1/2',
+                                // right gutter, top to bottom
+                                4 => 'right-4 top-24 animate-scroll-3 lg:top-[14%] lg:right-[calc(var(--hero-gutter)*0.5)] lg:translate-x-1/2',
+                                5 => 'bottom-[4%] right-1/2 translate-x-1/2 animate-scroll-3 lg:bottom-auto lg:top-[44%] lg:right-[calc(var(--hero-gutter)*0.4)]',
+                                3 => 'bottom-[8%] right-4 animate-scroll-1 lg:bottom-[2%] lg:right-[calc(var(--hero-gutter)*0.58)] lg:translate-x-1/2',
+                                default => 'hidden',
+                            },
+                    ]) !!}
+                @endforeach
+            @endif
         </section>
     @endif
 

@@ -1,15 +1,15 @@
 @utility type-xl {
-    @apply text-6xl mb-4 font-bold text-balance;
+    @apply text-4xl lg:text-6xl mb-4 font-bold text-balance;
 }
 
 @utility type-lg {
-    @apply text-4xl mb-4 font-bold text-balance;
+    @apply text-3xl lg:text-4xl mb-4 font-bold text-balance;
 }
 
 @utility type-md {
-    @apply text-3xl mb-4 font-bold ;
+    @apply text-2xl lg:text-3xl mb-4 font-bold ;
 }
 
 @utility type-sm {
-    @apply text-2xl mb-2! font-bold ;
+    @apply text-xl lg:text-2xl mb-2! font-bold ;
 }

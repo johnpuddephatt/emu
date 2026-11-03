@@ -4,28 +4,44 @@
  * without animation-timeline just show the images static.
  */
 @supports (animation-timeline: --test) {
+  /*
+   * The travel is in vh, so on a phone 30vh is most of the space
+   * between photos and text. `--scroll-travel` scales every keyframe,
+   * damped to half below lg.
+   */
+  .animate-scroll-1,
+  .animate-scroll-2,
+  .animate-scroll-3,
+  .animate-scroll-4 {
+    --scroll-travel: 0.5;
+
+    @media (width >= 64rem) {
+      --scroll-travel: 1;
+    }
+  }
+
   .animate-scroll-1 {
     view-timeline-name: --revealing-image;
     animation: linear scrollAnimation1 both;
-   animation-timeline: --revealing-image;
+    animation-timeline: --revealing-image;
   }
 
   .animate-scroll-2 {
     view-timeline-name: --revealing-image;
     animation: linear scrollAnimation2 both;
-    animation-timeline: --revealing-image;
+     animation-timeline: --revealing-image;
   }
 
   .animate-scroll-3 {
     view-timeline-name: --revealing-image;
     animation: linear scrollAnimation3 both;
-    animation-timeline: --revealing-image;
+     animation-timeline: --revealing-image;
   }
 
   .animate-scroll-4 {
     view-timeline-name: --revealing-image;
     animation: linear scrollAnimation4 both;
-    animation-timeline: --revealing-image;
+     animation-timeline: --revealing-image;
   }
 }
 
@@ -113,52 +129,52 @@
   @keyframes scrollAnimation1 {
     0% {
       opacity: 0;
-      transform: translateY(0vh);
+      transform: translateY(calc(0vh * var(--scroll-travel, 1)));
     }
     25% {
       opacity: 1;
     }
     100% {
-      transform: translateY(-10vh);
+      transform: translateY(calc(-10vh * var(--scroll-travel, 1)));
     }
   }
 
   @keyframes scrollAnimation2 {
     0% {
       opacity: 0;
-      transform: translateY(20vh);
+      transform: translateY(calc(20vh * var(--scroll-travel, 1)));
     }
     25% {
       opacity: 1;
     }
     100% {
-      transform: translateY(-20vh);
+      transform: translateY(calc(-20vh * var(--scroll-travel, 1)));
     }
   }
 
   @keyframes scrollAnimation3 {
     0% {
       opacity: 0;
-      transform: translateY(10vh);
+      transform: translateY(calc(10vh * var(--scroll-travel, 1)));
     }
     25% {
       opacity: 1;
     }
     100% {
-      transform: translateY(-5vh);
+      transform: translateY(calc(-5vh * var(--scroll-travel, 1)));
     }
   }
 
   @keyframes scrollAnimation4 {
     0% {
       opacity: 0;
-      transform: translateY(30vh);
+      transform: translateY(calc(30vh * var(--scroll-travel, 1)));
     }
     25% {
       opacity: 1;
     }
     100% {
-      transform: translateY(-30vh);
+      transform: translateY(calc(-30vh * var(--scroll-travel, 1)));
     }
   }
 }

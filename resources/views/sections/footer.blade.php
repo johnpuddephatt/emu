@@ -14,7 +14,7 @@
             <x-social-links class="mt-6" />
         </div>
 
-        <div class="flex flex-wrap items-start gap-x-12 gap-y-8 lg:flex-nowrap lg:gap-16">
+        <div class="flex flex-wrap items-start lg:gap-x-12 gap-y-8 lg:flex-nowrap lg:gap-16">
             @if (has_nav_menu('footer_navigation'))
                 <nav aria-label="{{ wp_get_nav_menu_name('footer_navigation') }}">
                     {!! wp_nav_menu([
